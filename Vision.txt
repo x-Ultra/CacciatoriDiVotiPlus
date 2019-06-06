@@ -1,0 +1,95 @@
+Cacciaiotori di Voti Plus
+
+Volevamo aggiungere le seguenti funzionalità:
+
+-Un server che gestisce la creazione di voti con posizione uguale per tutti (casuale)
+
+-Una laurea che si sblocca dopo la cattura di un numero predeterminato id voti
+
+-Un sistema di notifiche per segnalare i nuovi voti
+
+-Classifica interna con il tempo degli ultimi voti catturati
+
+
+AGGIORNAMENTI
+
+-1)Aggiornare ActivityVotoCatturato
+
+	Avvertire se voto preso sia minore rispetto a qullo che eventualmente
+	l'utente ha già nel DB.
+
+0)Aggiornare booklet
+	
+	Mettere stato (Laureato/non laureato) e tipo di Laurea ch si sta conseguendo.
+	Con voto di laura che si aggiorna all'ottenimanto di nuovi voti.
+
+1)Ing Informatica, Economia, Medicina.
+
+	Info delle materie delle lauree su FILE separati.
+	Funzione che gestisce ritorno di voti in base la materia, flessibile.
+	
+	''Login'' iniziale per scelta della laurea, tra quella disponibile
+
+2)Timer globale gestito dal server.
+	
+	quando il client interagisce con il server, questo gli restituisce il voto
+	ed un timer, che inizia a gestire LOCALMENTE.
+	Allo scadere di quest'ultimo rieffettua nuova richiesta al server.
+
+3)Salvataggio del server dell'ultimo voto generato
+	
+	In questo modo in caso di crash del server, il server rerinvia lo
+	stesso voto.
+
+4)Classifica interna (2 nuove activity)
+
+	Suddivisione voti per rarità. Da qui passaggio alla seconda activity.
+	Usando schizzo di pasquale.
+
+5)Sistema di Notifiche
+
+	Servizio sempre attivo che allo scadere del timer manda una notifica 
+	all'utente con la rarità ottenuta.
+	Settare la notifica dopo ottenimento voto dal server.
+	Il server ritornerà il TIMER rimanente.
+	pseudocodice : timer.shedule(timerTask, TIMER, 1h)
+
+
+ACTIVITIES
+
+1)Schermata iniziale con scelta della laurea, nome (dati necessari per il booklet aggiuntivo).
+
+2)Classifica interna con custom view + recycler view
+
+3)Se avanza tempo: dialog con tutorial di cosa fare con l'applicazione
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+	
+	
