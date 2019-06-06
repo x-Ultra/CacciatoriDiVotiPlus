@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/booklet_item_background">
+
+    <it.iCarrambaDT.cacciatoriDiVoti.customViews.MyTextView
+        android:id="@+id/tvCfu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginRight="30dp"
+        android:text="x CFU"
+        android:textSize="@dimen/textViewCfuDim"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tvVoto"
+        app:layout_constraintStart_toEndOf="@+id/iwRarity"
+        app:layout_constraintTop_toBottomOf="@+id/tvMateria" />
+
+    <it.iCarrambaDT.cacciatoriDiVoti.customViews.MyTextView
+        android:id="@+id/tvMateria"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:autoText="false"
+        android:maxWidth="140dp"
+        android:maxHeight="40dp"
+        android:text="Materia"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/textViewMateriaDim"
+        app:autoSizeMaxTextSize="@dimen/textViewMateriaDim"
+        app:autoSizeMinTextSize="@dimen/textViewVotoMinDim"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintEnd_toStartOf="@+id/tvVoto"
+        app:layout_constraintStart_toEndOf="@+id/iwRarity"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <it.iCarrambaDT.cacciatoriDiVoti.customViews.MyTextView
+        android:id="@+id/tvVoto"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/voto_background"
+        android:text="20"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/textViewVotoDim"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <it.iCarrambaDT.cacciatoriDiVoti.customViews.RarityImageView
+        android:id="@+id/iwRarity"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp"
+        android:maxWidth="110dp"
+        android:maxHeight="110dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars[2]" />
+
+</android.support.constraint.ConstraintLayout>

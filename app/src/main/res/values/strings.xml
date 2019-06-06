@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Cacciatori Di Voti</string>
+    <string name="tempoStr">Remaining time:</string>
+    <string name="mapButtonStr">Map</string>
+    <string name="gradesButtonStr">Grade Book</string>
+    <string name="votoCatturatoStr">Grade captured!</string>
+    <string name="corsoStr">Course:</string>
+    <string name="creditiStr">CFU:</string>
+    <string name="votoStr">Mark:</string>
+    <string name="homeStr">home</string>
+    <string name="dbError">Error On Opening .csv DB file</string>
+    <string name="csvReadError">Error On Reading .csv DB file, try to reboot the App</string>
+    <string name="coordsFileError">Error On Reading .txt coords file, try to reboot the App</string>
+    <string name="dbCreation">Generating Data Base</string>
+    <string name="dbCreated">Data Base has been created</string>
+    <string name="dbPopulation">Populationg Data Base</string>
+    <string name="dbPopulated">Data Base has been populated</string>
+    <string name="coordsGenerateing">Generating coordinates</string>
+    <string name="coordsGenerated">Coordinates generated</string>
+    <string name="sharedGenerating">Generating SharedPreferences</string>
+    <string name="sharedGenerated">SharedPreference generated</string>
+    <string name="noElementsInBooklet">Your booklet is empty :(</string>
+</resources>

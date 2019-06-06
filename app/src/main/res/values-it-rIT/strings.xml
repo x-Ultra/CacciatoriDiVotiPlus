@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Cacciatori Di Voti</string>
+    <string name="tempoStr">Tempo rimanente:</string>
+    <string name="mapButtonStr">Mappa</string>
+    <string name="gradesButtonStr">Libretto Universitario</string>
+    <string name="votoCatturatoStr">Voto catturato!</string>
+    <string name="corsoStr">Esame:</string>
+    <string name="creditiStr">CFU:</string>
+    <string name="votoStr">Voto:</string>
+    <string name="homeStr">home</string>
+    <string name="dbError">Errore Nell\'apertura del file .csv</string>
+    <string name="dbCreated">Il database e\' stato creato</string>
+    <string name="dbCreation">Sto creando il data base</string>
+    <string name="dbPopulation">Sto popolando il data base</string>
+    <string name="dbPopulated">Sto Creando il data base</string>
+    <string name="csvReadError">Errore nella lettora del file .csv, riavvia l\'App</string>
+    <string name="coordsGenerateing">Sto generando le coordinate</string>
+    <string name="coordsGenerated">Coordinate generate</string>
+    <string name="sharedGenerating">Sto generando file SharedPreferences</string>
+    <string name="sharedGenerated">Finito la generazione di file SharedPreferences</string>
+    <string name="coordsFileError">Errore nella lettura del file delle coordinate, prova a riavviare l\'App</string>
+    <string name="noElementsInBooklet">Non hai ancora nessun voto :(</string>
+</resources>
