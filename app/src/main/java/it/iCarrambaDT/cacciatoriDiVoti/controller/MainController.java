@@ -13,7 +13,7 @@ public class MainController {
     private TimeControl dates;
     private String prova;
     private Voto mark;
-
+    private int tor=4;
 
     public MainController(Context context) {
         voto=null;
