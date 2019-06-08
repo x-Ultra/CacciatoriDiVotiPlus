@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Window;
 import android.widget.Toast;
 
 import java.io.IOException;
@@ -62,7 +61,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         ((MyTextView)findViewById(R.id.tvDbProg)).setText("DB check done");
         ((MyTextView)findViewById(R.id.tvFileProg)).setText("FILE check done");
 
-        Intent i = new Intent(this, MainActivity.class);
+        Intent i = new Intent(this, WaitingServerActivity.class);
         startActivity(i);
         finish();
     }

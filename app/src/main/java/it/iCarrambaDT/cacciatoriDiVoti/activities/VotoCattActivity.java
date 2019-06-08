@@ -9,9 +9,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import it.iCarrambaDT.cacciatoriDiVoti.R;
-import it.iCarrambaDT.cacciatoriDiVoti.controller.MainController;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.RarityImageView;
-import it.iCarrambaDT.cacciatoriDiVoti.entity.Voto;
 
 public class VotoCattActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -54,7 +52,7 @@ public class VotoCattActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View v) {
-        startActivity(new Intent(this, MainActivity.class));
+        startActivity(new Intent(this, WaitingServerActivity.class));
         finish();
     }
 }

@@ -20,4 +20,5 @@
     <string name="sharedGenerating">Generating SharedPreferences</string>
     <string name="sharedGenerated">SharedPreference generated</string>
     <string name="noElementsInBooklet">Your booklet is empty :(</string>
+    <string name="waitingServer">Waiting Response From The Server</string>
 </resources>

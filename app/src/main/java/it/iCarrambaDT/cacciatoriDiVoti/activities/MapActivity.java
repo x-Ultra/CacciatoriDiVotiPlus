@@ -317,7 +317,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     mapSetUp();
                 } else {
-                    startActivity(new Intent(this, MainActivity.class));
+                    startActivity(new Intent(this, WaitingServerActivity.class));
                     finish();
                 }
             }

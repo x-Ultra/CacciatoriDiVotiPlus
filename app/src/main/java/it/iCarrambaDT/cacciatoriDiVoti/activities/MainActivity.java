@@ -4,14 +4,13 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.widget.ProgressBar;
-import android.widget.Toast;
 
 import java.util.Calendar;
 import java.util.Date;
 
 import it.iCarrambaDT.cacciatoriDiVoti.R;
+import it.iCarrambaDT.cacciatoriDiVoti.customViews.GifImageView;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.MyButton;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.MyTextView;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.RarityImageView;
@@ -32,11 +31,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        //USATO PER TESTARE LA GIF DA MOSTRARE NEL CARICAMENTO
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_waiting_server);
+
+        GifImageView gifImageView = (GifImageView) findViewById(R.id.gifImageView);
+        gifImageView.setGifImageResource(R.drawable.whale);
+
+        /*
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        */
 
 
     }
