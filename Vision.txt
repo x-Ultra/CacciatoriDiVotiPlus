@@ -61,7 +61,20 @@ ACTIVITIES
 
 2)Classifica interna con custom view + recycler view
 
+
+!! da fare (ha detto il prof, sarebbe mooolto preferibile)
 3)Se avanza tempo: dialog con tutorial di cosa fare con l'applicazione
+
+4)Activity in cui mettere animazione (di attesa) 
+  e nel frattempo far partire un asynk tark che usi volley per prendere
+  l'informazione dal server ed elaborare la materia ricevuta ed 
+  il tempo rimanente per la materia stessa.
+
+  Tali informazini verranno date alla schermata principale (a pasquale ?)
+  o comunque a chiunque vorrà.
+  Se nessuno vorrà tali informazioni verrete tutti fucilati.
+
+  
 
 
 
