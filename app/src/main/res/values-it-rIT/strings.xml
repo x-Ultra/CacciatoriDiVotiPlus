@@ -22,4 +22,5 @@
     <string name="coordsFileError">Errore nella lettura del file delle coordinate, prova a riavviare l\'App</string>
     <string name="noElementsInBooklet">Non hai ancora nessun voto :(</string>
     <string name="waitingServer">Sto Aspettando Il Server</string>
+    <string name="serverError">Comunicazione con il server fallita</string>
 </resources>

@@ -32,15 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        /*
-        //USATO PER TESTARE LA GIF DA MOSTRARE NEL CARICAMENTO
-
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_waiting_server);
-
-        GifImageView gifImageView = (GifImageView) findViewById(R.id.gifImageView);
-        gifImageView.setGifImageResource(R.drawable.whale);
-        */
+        //startActivity(new Intent(this, WaitingServerActivity.class));
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
