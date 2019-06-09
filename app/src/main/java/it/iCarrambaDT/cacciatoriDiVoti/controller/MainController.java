@@ -13,9 +13,6 @@ public class MainController {
     private TimeControl dates;
     private String prova;
     private Voto mark;
-    private String ciao = "ciao";
-    private String ciao2 = "nammerda";
-    private int tor=4;
 
     public MainController(Context context) {
         voto=null;

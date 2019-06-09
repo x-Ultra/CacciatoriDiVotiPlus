@@ -1,5 +1,6 @@
 package it.iCarrambaDT.cacciatoriDiVoti.activities;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -16,5 +17,6 @@ public class WaitingServerActivity extends AppCompatActivity {
         GifImageView gifImageView = (GifImageView) findViewById(R.id.gifImageView);
         gifImageView.setGifImageResource(R.drawable.whale);
 
+        startActivity(new Intent(this,MainActivity.class));
     }
 }
