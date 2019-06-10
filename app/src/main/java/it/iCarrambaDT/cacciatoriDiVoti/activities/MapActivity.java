@@ -31,7 +31,6 @@ import java.util.Calendar;
 import java.util.Date;
 
 import it.iCarrambaDT.cacciatoriDiVoti.R;
-import it.iCarrambaDT.cacciatoriDiVoti.controller.MainController;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.MyTextView;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.RarityImageView;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.TimerListener;
@@ -121,7 +120,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         i.putExtra("Voto", votoBundle);
 
-        new MainController(this).catchedMark(voto);
+        //TODO Inserire cattura del voto
 
         startActivity(i);
         finish();

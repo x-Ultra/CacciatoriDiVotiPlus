@@ -8,7 +8,6 @@ import android.widget.Toast;
 import java.io.IOException;
 
 import it.iCarrambaDT.cacciatoriDiVoti.R;
-import it.iCarrambaDT.cacciatoriDiVoti.controller.MainController;
 import it.iCarrambaDT.cacciatoriDiVoti.entity.MateriaPlus;
 import it.iCarrambaDT.cacciatoriDiVoti.entity.Voto;
 import it.iCarrambaDT.cacciatoriDiVoti.serverInteraction.ServerCaller;

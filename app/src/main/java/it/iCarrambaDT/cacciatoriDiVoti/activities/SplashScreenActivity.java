@@ -62,6 +62,8 @@ public class SplashScreenActivity extends AppCompatActivity {
         ((MyTextView)findViewById(R.id.tvFileProg)).setText("FILE check done");
 
         Intent i = new Intent(this, WaitingServerActivity.class);
+        //Intent i = new Intent(this, MainActivity.class);
+
         startActivity(i);
         finish();
     }
