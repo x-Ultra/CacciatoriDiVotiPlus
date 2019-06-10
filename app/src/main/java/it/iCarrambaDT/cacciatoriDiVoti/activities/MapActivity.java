@@ -110,7 +110,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
 
 
-        System.out.println(voto.getSubject() + " " + voto.getMark());
+        //System.out.println(voto.getSubject() + " " + voto.getMark());
         Intent i = new Intent(this,VotoCattActivity.class);
         Bundle votoBundle = new Bundle();
         votoBundle.putString("Materia", voto.getSubject());

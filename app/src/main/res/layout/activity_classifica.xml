@@ -17,4 +17,17 @@
         custom:pageNumber="5"
         custom:verticalSpace="30"
         custom:horizontalSpace="10"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvClassifica"
+        android:layout_width="392dp"
+        android:layout_height="639dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        custom:layout_constraintBottom_toBottomOf="parent"
+        custom:layout_constraintEnd_toEndOf="parent"
+        custom:layout_constraintStart_toStartOf="parent"
+        custom:layout_constraintTop_toBottomOf="@+id/pageView" />
 </android.support.constraint.ConstraintLayout>
