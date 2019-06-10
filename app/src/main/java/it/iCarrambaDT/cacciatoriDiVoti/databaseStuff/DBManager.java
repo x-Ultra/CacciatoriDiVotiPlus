@@ -12,11 +12,9 @@ import it.iCarrambaDT.cacciatoriDiVoti.entity.Voto;
 
 public class DBManager {
 
-    private String SEPARATOR = ",";
     private static DBManager instance = null;
     private DBHelper helper;
 
-    private BufferedReader br;
     private Context context;
 
     /*
@@ -30,8 +28,7 @@ public class DBManager {
 
      */
 
-    private DBManager(Context context, InputStream is){
-        this.br = new BufferedReader(new InputStreamReader(is));
+    private DBManager(Context context){
         this.context = context;
     }
 
@@ -39,10 +36,10 @@ public class DBManager {
         return helper.getObtainedVoti();
     }
 
-    public static DBManager getInstance(Context context, InputStream is) {
+    public static DBManager getInstance(Context context) {
 
         if(instance == null){
-            instance = new DBManager(context, is);
+            instance = new DBManager(context);
         }
 
         return instance;
@@ -55,12 +52,12 @@ public class DBManager {
     }
 
     public void createDBorCheck() throws IOException {
-        String COL_ATTRS;
-        COL_ATTRS = br.readLine();
-        helper = new DBHelper(context, COL_ATTRS.split(SEPARATOR));
+        helper = new DBHelper(context);
         helper.onCreate(helper.getWritableDatabase());
     }
 
+    //Non dovrebbe servire più
+    /*
     public void populateDBorCheck() throws IOException{
 
         //se il DB è vuoto, lo popolo
@@ -75,22 +72,19 @@ public class DBManager {
             helper.populate(helper.getWritableDatabase(), line.split(SEPARATOR));
         }
     }
+    */
 
-    public void updateVoto(String voto, String materia){
-        helper.updateVoto(voto, materia);
+    public void updateVoto(String voto, String materia,String tempoCattura,String rarita){
+        helper.updateVoto(voto, materia, tempoCattura,rarita);
     }
 
-    public void updateRarita(String rarita, String materia){
-        helper.updateRarita(rarita, materia);
+    public void insertVoto(String voto, String materia, String tempoCattura, String crediti, String rarita) {
+        helper.insertNewVoto(voto,materia,tempoCattura,crediti,rarita);
     }
 
     public Voto getVoto(String materia){
         return helper.getVoto(materia);
     }
 
-
-    public Voto getVotoRarLessEqual(int num){
-        return helper.getVotoRarLessEqual(num);
-    }
 
 }

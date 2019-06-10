@@ -16,6 +16,7 @@ import static java.lang.Thread.sleep;
     Classe usata per creare e popolare il DB
     partendo dal file .csv (InputStream riferente)
  */
+//TODO Controllare se qui si può levare InputStream
 
 public class DBTask extends AsyncTask<InputStream, String, String> {
 
@@ -33,7 +34,7 @@ public class DBTask extends AsyncTask<InputStream, String, String> {
     @Override
     protected String doInBackground(InputStream... inputStreams) {
 
-        DBManager dbManager = DBManager.getInstance(reference.get(), inputStreams[0]);
+        DBManager dbManager = DBManager.getInstance(reference.get());
 
         //verifico/creo DB
         publishProgress(reference.get().getString(R.string.dbCreation));
@@ -52,6 +53,8 @@ public class DBTask extends AsyncTask<InputStream, String, String> {
         }
         publishProgress(reference.get().getString(R.string.dbCreated));
 
+        /*
+        //niente più popolamento
         //verifico/popolo DB
         publishProgress(reference.get().getString(R.string.dbPopulation));
         try {
@@ -68,6 +71,7 @@ public class DBTask extends AsyncTask<InputStream, String, String> {
         }
         publishProgress(reference.get().getString(R.string.dbPopulated));
 
+        */
         return null;
     }
 

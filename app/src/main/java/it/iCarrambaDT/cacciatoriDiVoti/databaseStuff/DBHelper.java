@@ -18,31 +18,30 @@ public class DBHelper extends SQLiteOpenHelper {
     public static final String DB_NAME = "DataBaseVoti";
     public static final String TABLE_NAME = "Voti";
     static final String ID = "_id";
-    private String[] COL_ATTRS = null;
+    //private String[] COL_ATTRS = null;
     private static final int DB_VERSION = 1;
 
 
     public DBHelper(Context context){
         super(context, DB_NAME, null, DB_VERSION);
     }
-
+/*
     public DBHelper(Context context, String[] COL_ATTRS){
         super(context, DB_NAME, null, DB_VERSION);
-        this.COL_ATTRS = COL_ATTRS;
+        //this.COL_ATTRS = COL_ATTRS;
     }
-
+*/
     @Override
     public void onCreate(SQLiteDatabase db) {
         String query;
 
         query = "CREATE TABLE "+ TABLE_NAME +" ("+
-                ID + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, ";
-        for(String attr: COL_ATTRS){
-            query += attr + " TEXT, ";
-        }
-        //deleting  last ','
-        query = query.substring(0, query.length()-2);
-        query += ");";
+                ID + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " +
+                "Materia TEXT, " +
+                "Voto TEXT, " +
+                "Crediti TEXT, " +
+                "Rarita TEXT, " +
+                "TempoCattura TEXT);";
 
         try {
             db.execSQL(query);
@@ -64,6 +63,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
     }
 
+    //non dovrebbe servire più
+    /*
     public void populate(SQLiteDatabase db, String[] line) {
 
         ContentValues values = new ContentValues();
@@ -79,22 +80,37 @@ public class DBHelper extends SQLiteOpenHelper {
             e.printStackTrace();
         }
     }
+    */
 
-    public void updateVoto(String voto, String materia){
+    //Cambiata leggermente - Aggiunto il tempo di cattura
+    public void updateVoto(String voto, String materia, String tempoCattura, String rarita){
         String query;
-        query = "UPDATE "+TABLE_NAME+" SET Voto = '"+voto+"' WHERE Materia = '"+materia+"';";
+        query = "UPDATE "+TABLE_NAME+" SET Voto = '"+voto+"', TempoCattura = '"+tempoCattura+"', Rarita = '"+rarita+"' WHERE Materia = '"+materia+"';";
         this.getWritableDatabase().execSQL(query);
     }
 
+    public void insertNewVoto(String voto, String materia, String tempoCattura, String crediti, String rarita) {
+        if (getVoto(materia) == null) {
+            String query;
+            query = "INSERT INTO " + TABLE_NAME + "(Voto,Materia,Rarita,Crediti,TempoCattura) VALUES('" + voto + "','" + materia + "','" + rarita + "','" + crediti + "','" + tempoCattura + "');";
+            this.getWritableDatabase().execSQL(query);
+        } else {
+            updateVoto(voto,materia,tempoCattura,rarita);
+        }
+    }
+
+    //Non dovrebbe servire più
+    /*
     public void updateRarita(String rarita, String materia){
         String query;
         query = "UPDATE "+TABLE_NAME+" SET Rarita = '"+rarita+"' WHERE Materia = '"+materia+"';";
         this.getWritableDatabase().execSQL(query);
     }
+    */
 
     public Vector<Voto> getObtainedVoti(){
         String query;
-        query = "SELECT * FROM "+TABLE_NAME+" WHERE Voto <> 0;";
+        query = "SELECT * FROM "+TABLE_NAME+";";
 
         Cursor cursor = this.getWritableDatabase().rawQuery(query, null);
 
@@ -137,6 +153,8 @@ public class DBHelper extends SQLiteOpenHelper {
         return voto;
     }
 
+    //Non dovrebbe più essere usata
+    /*
     //dare voto (classe) con rarità minore o uguale ad uno dato
     public Voto getVotoRarLessEqual(int num){
         String query;
@@ -157,7 +175,7 @@ public class DBHelper extends SQLiteOpenHelper {
         cursor.close();
         return voto;
     }
-
+    */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         //to fill later

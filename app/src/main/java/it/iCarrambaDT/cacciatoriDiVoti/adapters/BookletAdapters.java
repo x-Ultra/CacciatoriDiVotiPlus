@@ -53,15 +53,18 @@ public class BookletAdapters extends RecyclerView.Adapter<BookletAdapters.MyView
         myViewHolder.materia.setText(voti.get(i).getSubject());
         myViewHolder.voto.setText(Integer.toString(voti.get(i).getMark()));
         myViewHolder.cfu.setText(Integer.toString(voti.get(i).getCredits()) + " CFU");
+        myViewHolder.rarImm.changeRarity(voti.get(i).getRarity());
 
+        //Non dovrebbe servire più questa roba sulla rarità
+        /*
         double rarita = 2 * (voti.get(i).getMark() - 17) / (3 * 14.0) + voti.get(i).getCredits() / (3 * 18.0);
 
         if (rarita > 0.2 * (voti.get(i).getRarity()) || rarita < 0.2 * (voti.get(i).getRarity()-1)){
             System.out.println(voti.get(i).getSubject());
             voti.get(i).setRarity(voti.get(i).getRarity() - 1);
         }
+        */
 
-        myViewHolder.rarImm.changeRarity(voti.get(i).getRarity());
 
     }
 

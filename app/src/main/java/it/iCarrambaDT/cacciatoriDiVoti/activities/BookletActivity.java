@@ -57,15 +57,11 @@ public class BookletActivity extends AppCompatActivity {
         Rarità calcolata a mano utilizzando la funzione di rarità
          */
 
-        dbManager.updateVoto("18", "Algebra E Logica");
-        dbManager.updateVoto("31", "Mobile Programming"); //:)
-        dbManager.updateVoto("30", "Ingegneria Del Software E Progettazione Wab");
-        dbManager.updateVoto("18", "Basi Di Dati");
-        dbManager.updateVoto("24", "Automi E Linguaggi");
-        dbManager.updateRarita("1","Algebra E Logica");
-        dbManager.updateRarita("4","Mobile Programming"); //:)
-        dbManager.updateRarita("5","Ingegneria Del Software E Progettazione Wab");
-        dbManager.updateRarita("2","Basi Di Dati");
-        dbManager.updateRarita("3","Automi E Linguaggi");
+        dbManager.insertVoto("18", "Algebra E Logica","12:21", "6","4");
+        dbManager.insertVoto("31", "Mobile Programming","12:21", "6","3"); //:)
+        dbManager.insertVoto("30", "Ingegneria Del Software E Progettazione Web","12:21", "12", "2");
+        dbManager.insertVoto("18", "Basi Di Dati","12:21", "9","5");
+        dbManager.insertVoto("24", "Automi E Linguaggi","12:21", "6", "1");
+        dbManager.insertVoto("28", "Automi E Linguaggi","12:21", "6", "5");
     }
 }
