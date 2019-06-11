@@ -1,7 +1,5 @@
 package it.iCarrambaDT.cacciatoriDiVoti.serverInteraction;
 
-import android.support.annotation.NonNull;
-
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;
