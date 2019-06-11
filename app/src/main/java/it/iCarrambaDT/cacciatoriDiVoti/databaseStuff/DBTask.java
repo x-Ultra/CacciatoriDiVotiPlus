@@ -18,7 +18,7 @@ import static java.lang.Thread.sleep;
  */
 //TODO Controllare se qui si può levare InputStream
 
-public class DBTask extends AsyncTask<InputStream, String, String> {
+public class DBTask extends AsyncTask<Void, String, String> {
 
     private WeakReference<Activity> reference;
 
@@ -32,25 +32,13 @@ public class DBTask extends AsyncTask<InputStream, String, String> {
      */
 
     @Override
-    protected String doInBackground(InputStream... inputStreams) {
+    protected String doInBackground(Void... voids) {
 
         DBManager dbManager = DBManager.getInstance(reference.get());
 
         //verifico/creo DB
         publishProgress(reference.get().getString(R.string.dbCreation));
-        try {
-            dbManager.createDBorCheck();
-        } catch (IOException e) {
-            e.printStackTrace();
-            //in caso di errore di lettura del file .csv comunico
-            publishProgress(reference.get().getString(R.string.csvReadError));
-            try {
-                //se ho un errore in lettura invito l'utente a riavviare
-                sleep(1000000000);
-            } catch (InterruptedException e1) {
-                e1.printStackTrace();
-            }
-        }
+        dbManager.createDBorCheck();
         publishProgress(reference.get().getString(R.string.dbCreated));
 
         /*

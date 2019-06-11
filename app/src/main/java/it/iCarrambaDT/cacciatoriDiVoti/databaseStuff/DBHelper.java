@@ -41,7 +41,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 "Voto TEXT, " +
                 "Crediti TEXT, " +
                 "Rarita TEXT, " +
-                "TempoCattura TEXT);";
+                "TempoCattura INTEGER);";
 
         try {
             db.execSQL(query);
@@ -108,6 +108,33 @@ public class DBHelper extends SQLiteOpenHelper {
     }
     */
 
+    public Vector<Voto> getVotiInOrder(String rarity) {
+        String query;
+        query = "SELECT * FROM "+TABLE_NAME+" WHERE Rarita='"+rarity+"' ORDER BY TempoCattura LIMIT 10;";
+
+        Cursor cursor = this.getWritableDatabase().rawQuery(query, null);
+
+        if (!(cursor.moveToFirst())){
+            return new Vector<>();
+        }
+
+        Vector<Voto> vectVoto = new Vector<>();
+        do {
+
+            vectVoto.add( new Voto(cursor.getString(cursor.getColumnIndex("Materia")),
+                    Integer.parseInt(cursor.getString(cursor.getColumnIndex("Crediti"))),
+                    Integer.parseInt(cursor.getString(cursor.getColumnIndex("Voto"))),
+                    Integer.parseInt(cursor.getString(cursor.getColumnIndex("Rarita"))),
+                    cursor.getInt(cursor.getColumnIndex("TempoCattura"))));
+
+        }while(cursor.moveToNext());
+
+        cursor.close();
+
+        return vectVoto;
+
+
+    }
     public Vector<Voto> getObtainedVoti(){
         String query;
         query = "SELECT * FROM "+TABLE_NAME+";";
@@ -124,7 +151,8 @@ public class DBHelper extends SQLiteOpenHelper {
             vectVoto.add( new Voto(cursor.getString(cursor.getColumnIndex("Materia")),
                     Integer.parseInt(cursor.getString(cursor.getColumnIndex("Crediti"))),
                     Integer.parseInt(cursor.getString(cursor.getColumnIndex("Voto"))),
-                    Integer.parseInt(cursor.getString(cursor.getColumnIndex("Rarita")))));
+                    Integer.parseInt(cursor.getString(cursor.getColumnIndex("Rarita"))),
+                    cursor.getInt(cursor.getColumnIndex("TempoCattura"))));
 
         }while(cursor.moveToNext());
 
@@ -147,8 +175,8 @@ public class DBHelper extends SQLiteOpenHelper {
         Voto voto = new Voto(cursor.getString(cursor.getColumnIndex("Materia")),
                 Integer.parseInt(cursor.getString(cursor.getColumnIndex("Crediti"))),
                 Integer.parseInt(cursor.getString(cursor.getColumnIndex("Voto"))),
-                Integer.parseInt(cursor.getString(cursor.getColumnIndex("Rarita"))));
-
+                Integer.parseInt(cursor.getString(cursor.getColumnIndex("Rarita"))),
+                cursor.getInt(cursor.getColumnIndex("TempoCattura")));
         cursor.close();
         return voto;
     }

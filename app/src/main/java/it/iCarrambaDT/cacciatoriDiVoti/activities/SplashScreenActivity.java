@@ -12,6 +12,7 @@ import java.io.InputStream;
 
 import it.iCarrambaDT.cacciatoriDiVoti.R;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.MyTextView;
+import it.iCarrambaDT.cacciatoriDiVoti.databaseStuff.DBManager;
 import it.iCarrambaDT.cacciatoriDiVoti.databaseStuff.DBTask;
 import it.iCarrambaDT.cacciatoriDiVoti.fileManager.FileTask;
 
@@ -34,11 +35,9 @@ public class SplashScreenActivity extends AppCompatActivity {
         //ottendo tutti i dati per la verifica qui di seguito
         AssetManager assets = getAssets();
         try {
-            InputStream dbInputStream = assets.open(this.databaseCsvFileName, MODE_PRIVATE);
-
             //verifico se il DB è già stato creato e popolato
             DBTask dbTask = new DBTask(this);
-            dbTask.execute(dbInputStream);
+            dbTask.execute();
 
             //verifico se dispondo di tutti i file (SharedPreferences ecc..)
 
@@ -52,7 +51,11 @@ public class SplashScreenActivity extends AppCompatActivity {
             FileTask fileTask = new FileTask(this, coordsInputStream);
             fileTask.execute(sharedCoord, lastLogs);
 
+            System.out.println("sup");
+
         } catch (IOException e) {
+
+            System.out.println(e.getMessage());
             e.printStackTrace();
             Toast.makeText(this, R.string.dbError, Toast.LENGTH_SHORT).show();
         }
@@ -61,9 +64,11 @@ public class SplashScreenActivity extends AppCompatActivity {
         ((MyTextView)findViewById(R.id.tvDbProg)).setText("DB check done");
         ((MyTextView)findViewById(R.id.tvFileProg)).setText("FILE check done");
 
+        //dbm.createDBorCheck();
         //Intent i = new Intent(this, WaitingServerActivity.class);
         //Intent i = new Intent(this, MainActivity.class);
-        Intent i = new Intent(this, BookletActivity.class);
+        //Intent i = new Intent(this, BookletActivity.class);
+        Intent i = new Intent(this, ClassificaActivity.class);
 
         startActivity(i);
         finish();

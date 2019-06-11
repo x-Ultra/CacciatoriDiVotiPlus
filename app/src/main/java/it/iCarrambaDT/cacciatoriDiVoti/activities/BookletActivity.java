@@ -19,7 +19,7 @@ import it.iCarrambaDT.cacciatoriDiVoti.databaseStuff.DBManager;
 
 public class BookletActivity extends AppCompatActivity {
 
-    private DBManager dbManager = DBManager.getInstance();
+    private DBManager dbManager = DBManager.getInstance(this);
     private RecyclerView rv;
 
     @Override
@@ -57,11 +57,11 @@ public class BookletActivity extends AppCompatActivity {
         Rarità calcolata a mano utilizzando la funzione di rarità
          */
 
-        dbManager.insertVoto("18", "Algebra E Logica","12:21", "6","4");
-        dbManager.insertVoto("31", "Mobile Programming","12:21", "6","3"); //:)
-        dbManager.insertVoto("30", "Ingegneria Del Software E Progettazione Web","12:21", "12", "2");
-        dbManager.insertVoto("18", "Basi Di Dati","12:21", "9","5");
-        dbManager.insertVoto("24", "Automi E Linguaggi","12:21", "6", "1");
-        dbManager.insertVoto("28", "Automi E Linguaggi","12:21", "6", "5");
+        dbManager.insertVoto("18", "Algebra E Logica","1221", "6","4");
+        dbManager.insertVoto("31", "Mobile Programming","1221", "6","3"); //:)
+        dbManager.insertVoto("30", "Ingegneria Del Software E Progettazione Web","1221", "12", "2");
+        dbManager.insertVoto("18", "Basi Di Dati","1221", "9","5");
+        dbManager.insertVoto("24", "Automi E Linguaggi","1221", "6", "1");
+        dbManager.insertVoto("28", "Automi E Linguaggi","1221", "6", "5");
     }
 }

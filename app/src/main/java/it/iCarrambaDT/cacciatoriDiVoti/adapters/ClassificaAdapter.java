@@ -22,12 +22,14 @@ public class ClassificaAdapter extends RecyclerView.Adapter<ClassificaAdapter.My
         public MyTextView cfu;
         public MyTextView materia;
         public MyTextView voto;
+        public MyTextView tempoCattura;
 
         public MyViewHolder(View v) {
             super(v);
             voto = v.findViewById(R.id.tvVotoCL);
             materia = v.findViewById(R.id.tvMateriaCL);
             cfu = v.findViewById(R.id.tvPostoCL);
+            tempoCattura = v.findViewById(R.id.tvTempoCL);
         }
     }
 
@@ -39,7 +41,7 @@ public class ClassificaAdapter extends RecyclerView.Adapter<ClassificaAdapter.My
     public ClassificaAdapter.MyViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
 
         View v = LayoutInflater.from(viewGroup.getContext()).
-                inflate(R.layout.booklet_item, viewGroup, false);
+                inflate(R.layout.classifica_item, viewGroup, false);
 
         return new ClassificaAdapter.MyViewHolder(v);
     }
@@ -50,6 +52,7 @@ public class ClassificaAdapter extends RecyclerView.Adapter<ClassificaAdapter.My
         myViewHolder.materia.setText(voti.get(i).getSubject());
         myViewHolder.voto.setText(Integer.toString(voti.get(i).getMark()));
         myViewHolder.cfu.setText(Integer.toString(i+1) + ".");
+        myViewHolder.tempoCattura.setText(Voto.catturaToString(voti.get(i).getTempoCattura()));
 
     }
 

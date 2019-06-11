@@ -36,6 +36,10 @@ public class DBManager {
         return helper.getObtainedVoti();
     }
 
+    public Vector<Voto> getVotiInOrder(int rarity){
+        return helper.getVotiInOrder(String.valueOf(rarity));
+    }
+
     public static DBManager getInstance(Context context) {
 
         if(instance == null){
@@ -45,13 +49,7 @@ public class DBManager {
         return instance;
     }
 
-    //chiamato da activities diverse da quella iniziale,
-    //l'iniziale va a riempire il campo COL_ATTR
-    public static DBManager getInstance() {
-        return instance;
-    }
-
-    public void createDBorCheck() throws IOException {
+    public void createDBorCheck() {
         helper = new DBHelper(context);
         helper.onCreate(helper.getWritableDatabase());
     }
