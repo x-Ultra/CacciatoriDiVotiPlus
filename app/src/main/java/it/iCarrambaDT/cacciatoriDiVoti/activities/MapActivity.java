@@ -27,6 +27,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -35,7 +36,8 @@ import it.iCarrambaDT.cacciatoriDiVoti.customViews.MyTextView;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.RarityImageView;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.TimerListener;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.TimerTextView;
-import it.iCarrambaDT.cacciatoriDiVoti.entity.Voto;
+import it.iCarrambaDT.cacciatoriDiVoti.entity.MateriaPlus;
+import it.iCarrambaDT.cacciatoriDiVoti.fileManager.SharedManager;
 import it.iCarrambaDT.cacciatoriDiVoti.helpers.LocationController;
 import it.iCarrambaDT.cacciatoriDiVoti.helpers.LocationUser;
 import it.iCarrambaDT.cacciatoriDiVoti.helpers.VotoAsyncTask;
@@ -51,7 +53,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private boolean mapReady = false;
     private boolean votoReady = false;
     private boolean alCapt = false;
-    private Voto voto;
+    private MateriaPlus materiaPlus;
     private int rarityId;
     private Marker currMark;
     private Circle currCirc;
@@ -92,14 +94,14 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     @Override
     public void locationArrived(Location location) {
 
-        //Converto la posizione del voto
+        //Converto la posizione del materiaPlus
         LatLng posizioneVoto = currMark.getPosition();
         Location posVoto = new Location("");
         posVoto.setLatitude(posizioneVoto.latitude);
         posVoto.setLongitude(posizioneVoto.longitude);
 
 
-        //Misuro la discanza, se è minore di 30 metri catturo il voto
+        //Misuro la discanza, se è minore di 30 metri catturo il materiaPlus
         if (posVoto.distanceTo(location) <= 30 && !alCapt) {
             alCapt = true;
             votoCatturato();
@@ -108,26 +110,30 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
     private void votoCatturato() {
 
+        timer.stopTimer();
 
-
-        //System.out.println(voto.getSubject() + " " + voto.getMark());
+        //System.out.println(materiaPlus.getSubject() + " " + materiaPlus.getMark());
         Intent i = new Intent(this,VotoCattActivity.class);
         Bundle votoBundle = new Bundle();
-        votoBundle.putString("Materia", voto.getSubject());
-        votoBundle.putInt("Crediti", voto.getCredits());
-        votoBundle.putInt("Voto", voto.getMark());
-        votoBundle.putInt("Rarita", voto.getRarity());
+        votoBundle.putString("Materia", materiaPlus.getSubject());
+        votoBundle.putInt("Crediti", materiaPlus.getCredits());
+        votoBundle.putInt("Voto", materiaPlus.getMark());
+        votoBundle.putInt("Rarita", materiaPlus.getRarity());
+        votoBundle.putString("TempoCattura", timer.getText().toString());
 
         i.putExtra("Voto", votoBundle);
 
-        //TODO Inserire cattura del voto
+        materiaPlus.setCapture(1);
+
+        SharedManager sm = new SharedManager(getSharedPreferences("lastLogs", MODE_PRIVATE));
+
+        sm.setLastVoto(materiaPlus.toString());
 
         startActivity(i);
         finish();
     }
 
     private void disableVoto() {
-
 
         MyTextView textView = findViewById(R.id.myTextView);
         textView.setVisibility(View.INVISIBLE);
@@ -144,7 +150,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     }
 
     //Set up activity
-    //Quando è pronta sia la mappa che il voto imposto tutta la activity
+    //Quando è pronta sia la mappa che il materiaPlus imposto tutta la activity
     private void setUpActivity() {
 
         //Elimino il veccchio cerchio
@@ -152,7 +158,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         //Imposto le view
         rarityView = findViewById(R.id.rarityImageViewMap);
-        rarityView.changeRarity(voto.getRarity());
+        rarityView.changeRarity(materiaPlus.getRarity());
 
         timer = findViewById(R.id.timerTextViewMap);
         timer.setListener(this);
@@ -161,24 +167,38 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         ProgressBar prog = findViewById(R.id.progressBar2);
         prog.setVisibility(View.INVISIBLE);
 
+        //Controllo se il voto è già stato catturato
+        SharedManager sm = new SharedManager(getSharedPreferences("lastLogs", MODE_PRIVATE));
 
-        if (voto.getCapture() == 1)
+        String[] materiaString = sm.getLastVoto();
+
+        if (materiaString[0].equals(materiaPlus.getSubject()) && materiaString[materiaString.length-1].equals("1"))
             disableVoto();
         else {
-            //System.out.println(voto.getLat() + " " + voto.getLng());
+            System.out.println(materiaPlus.getLat() + " " + materiaPlus.getLng());
 
             //Per testing eliminare commento
             //createCircle(41.8525221, 12.62088576);
-            createCircle(voto.getLat(), voto.getLng());
+            createCircle(materiaPlus.getLat(), materiaPlus.getLng());
 
             //Sposto la telecara sul cerchio
-            CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(voto.getPos(), 100);
+            CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(materiaPlus.getPos(), 100);
             map.animateCamera(cameraUpdate);
 
             //Inizio a controllare la posizione
             lc.startListening(this, this);
 
-            resetTimer();
+            try {
+                resetTimer(materiaPlus.getTimerInMillis());
+            } catch (ParseException e) {
+                //Errore nella ricezione del pacchetto try again
+
+                disableVoto();
+                VotoAsyncTask vat = new VotoAsyncTask();
+                vat.setListener(this);
+
+                vat.execute(this);
+            }
         }
 
     }
@@ -189,13 +209,12 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         lc.stopListening();
 
-        //Chiedo (rarità) del voto al control
+        //Chiedo (rarità) del materiaPlus al control
         VotoAsyncTask vat = new VotoAsyncTask();
         vat.setListener(this);
 
         vat.execute(this);
 
-        resetTimer();
     }
 
     //Imposto la mappa qunado è pronta
@@ -203,6 +222,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     @Override
     public synchronized void onMapReady(GoogleMap googleMap) {
 
+        System.out.println("map ready");
         mapReady = true;
 
         map = googleMap;
@@ -215,11 +235,11 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             setUpActivity();
     }
 
-    //Listener per l'asyncTask del voto
+    //Listener per l'asyncTask del materiaPlus
     @Override
-    public synchronized void onTaskFinished(Voto voto) {
+    public synchronized void onTaskFinished(MateriaPlus materia) {
 
-        this.voto = voto;
+        this.materiaPlus = materia;
 
         votoReady = true;
         if (mapReady)
@@ -232,7 +252,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private void createCircle(double lat, double lon) {
 
 
-        switch (voto.getRarity()) {
+        switch (materiaPlus.getRarity()) {
 
             case 1:
                 //Cambiare immagine a comune
@@ -298,9 +318,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     }
 
     //Reset del timer
-    private void resetTimer() {
-        Date currentTime = Calendar.getInstance().getTime();
-        timer.startTimer(currentTime.getTime());
+    private void resetTimer(long timeLeft) {
+        timer.startTimer(timeLeft);
     }
 
     //Prendo il risultato della richiesta dei permessi
@@ -329,7 +348,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         super.onResume();
         mapView.onResume();
 
-        //Chiedo (rarità) del voto al control
+        //Chiedo (rarità) del materiaPlus al control
         VotoAsyncTask vat = new VotoAsyncTask();
         vat.setListener(this);
 

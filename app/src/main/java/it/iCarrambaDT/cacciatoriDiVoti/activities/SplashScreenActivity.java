@@ -51,7 +51,7 @@ public class SplashScreenActivity extends AppCompatActivity {
             FileTask fileTask = new FileTask(this, coordsInputStream);
             fileTask.execute(sharedCoord, lastLogs);
 
-            System.out.println("sup");
+            //System.out.println("sup");
 
         } catch (IOException e) {
 
@@ -66,9 +66,9 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         //dbm.createDBorCheck();
         //Intent i = new Intent(this, WaitingServerActivity.class);
-        //Intent i = new Intent(this, MainActivity.class);
+        Intent i = new Intent(this, MainActivity.class);
         //Intent i = new Intent(this, BookletActivity.class);
-        Intent i = new Intent(this, ClassificaActivity.class);
+        //Intent i = new Intent(this, ClassificaActivity.class);
 
         startActivity(i);
         finish();

@@ -2,9 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="it.iCarrambaDT.cacciatoriDiVoti">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <uses-feature android:name="android.hardware.location.gps" />
+
 
     <application
         android:allowBackup="true"
@@ -51,11 +53,12 @@
             android:screenOrientation="portrait" />
 
         <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyADAcAE7EUeA9VN70Ld1Ng7XT71lAdidvc" />
-        <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyAu3Xb4jNOXHTCTjLd7JTtmtb0MO4I_iDM"/>
+
     </application>
 
 </manifest>

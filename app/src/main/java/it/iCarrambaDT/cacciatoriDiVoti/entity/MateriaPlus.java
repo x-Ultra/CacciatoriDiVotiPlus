@@ -71,8 +71,8 @@ public class MateriaPlus extends Voto {
 
     @Override
     public String toString(){
-        return getSubject()+", "+getCredits()+", "+getMark()+", "
-                +getRarity()+", "+getLat()+", "+getLng()
-                +", "+getEmissionTime();
+        return getSubject()+"-"+getCredits()+"-"+getMark()+"-"
+                +getRarity()+"-"+getLat()+"-"+getLng()
+                +"-"+getEmissionTime() + "-" + getCapture();
     }
 }

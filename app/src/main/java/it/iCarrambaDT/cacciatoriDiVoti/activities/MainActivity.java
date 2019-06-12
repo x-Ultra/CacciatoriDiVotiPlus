@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ProgressBar;
 
+import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -17,7 +18,9 @@ import it.iCarrambaDT.cacciatoriDiVoti.customViews.MyTextView;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.RarityImageView;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.TimerListener;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.TimerTextView;
+import it.iCarrambaDT.cacciatoriDiVoti.entity.MateriaPlus;
 import it.iCarrambaDT.cacciatoriDiVoti.entity.Voto;
+import it.iCarrambaDT.cacciatoriDiVoti.fileManager.SharedManager;
 import it.iCarrambaDT.cacciatoriDiVoti.helpers.VotoAsyncTask;
 import it.iCarrambaDT.cacciatoriDiVoti.helpers.VotoListener;
 
@@ -45,10 +48,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    private void resetTimer() {
+    private void resetTimer(long millis) {
 
-        Date currentTime = Calendar.getInstance().getTime();
-        timerTextView.startTimer(currentTime.getTime());
+        timerTextView.startTimer(millis);
 
     }
 
@@ -83,23 +85,50 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onTimerFinished() {
 
+        System.out.println("ciao");
+
         //Chiedo (rarità) del voto al control
         VotoAsyncTask vat = new VotoAsyncTask();
         vat.setListener(this);
 
         vat.execute(this);
 
-        resetTimer();
     }
 
     @Override
-    public void onTaskFinished(Voto voto) {
+    public void onTaskFinished(MateriaPlus materiaPlus) {
 
+        //Controllo se il voto è già stato catturato
+        SharedManager sm = new SharedManager(getSharedPreferences("lastLogs", MODE_PRIVATE));
+
+        String[] materiaString = sm.getLastVoto();
+
+        if (materiaString[0].equals(materiaPlus.getSubject()) && materiaString[materiaString.length-1].equals("1"))
+            disableVoto();
+        else {
+
+            //Imposto la timer text view
+            timerTextView = findViewById(R.id.timerTextViewMain);
+            timerTextView.setListener(this);
+
+            try {
+                resetTimer(materiaPlus.getTimerInMillis());
+            } catch (ParseException e) {
+                //Errore nella ricezione del pacchetto try again
+
+                VotoAsyncTask vat = new VotoAsyncTask();
+                vat.setListener(this);
+
+                vat.execute(this);
+                return;
+            }
+
+        }
         //Toast.makeText(this, voto.getCapture(), Toast.LENGTH_LONG);
 
         //Cambio la rarità con il voto che mi è stato passato
         rarityView = findViewById(R.id.rarityImageMain);
-        rarityView.changeRarity(voto.getRarity());
+        rarityView.changeRarity(materiaPlus.getRarity());
 
         //Imposto i bottoni
         mapButton = findViewById(R.id.mapButton);
@@ -113,18 +142,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         prog = findViewById(R.id.votoProgressBarMain);
         prog.setVisibility(View.INVISIBLE);
 
-        if (voto.getCapture() == 1) {
-            disableVoto();
 
-        } else {
-
-            //Imposto la timer text view
-            timerTextView = findViewById(R.id.timerTextViewMain);
-            timerTextView.setListener(this);
-
-            resetTimer();
-
-        }
 
     }
 
@@ -135,7 +153,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         setContentView(R.layout.activity_main);
 
-        System.out.println("ciao");
+        //System.out.println("ciao");
         //Chiedo (rarità) del voto al control
         VotoAsyncTask vat = new VotoAsyncTask();
         vat.setListener(this);

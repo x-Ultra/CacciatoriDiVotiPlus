@@ -33,7 +33,7 @@ public class TimerTextView extends android.support.v7.widget.AppCompatTextView {
     public void startTimer(long time) {
 
         //Imposto il timer, mi interessano solo i millisecondi che mancano alla prossima ora
-        cd = new CountDownTimer(3600000-(time%3600000)+60000, 10) {
+        cd = new CountDownTimer(time, 10) {
 
             public void onTick(long millisUntilFinished) {
                 setTime(millisUntilFinished);
@@ -44,6 +44,8 @@ public class TimerTextView extends android.support.v7.widget.AppCompatTextView {
             }
 
         }.start();
+
+
 
     }
 

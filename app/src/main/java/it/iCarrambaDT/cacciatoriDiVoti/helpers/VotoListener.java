@@ -1,7 +1,7 @@
 package it.iCarrambaDT.cacciatoriDiVoti.helpers;
 
-import it.iCarrambaDT.cacciatoriDiVoti.entity.Voto;
+import it.iCarrambaDT.cacciatoriDiVoti.entity.MateriaPlus;
 
 public interface VotoListener {
-    void onTaskFinished(Voto voto);
+    void onTaskFinished(MateriaPlus Materia);
 }
