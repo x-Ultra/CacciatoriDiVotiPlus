@@ -36,7 +36,9 @@ import it.iCarrambaDT.cacciatoriDiVoti.customViews.MyTextView;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.RarityImageView;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.TimerListener;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.TimerTextView;
+import it.iCarrambaDT.cacciatoriDiVoti.databaseStuff.DBManager;
 import it.iCarrambaDT.cacciatoriDiVoti.entity.MateriaPlus;
+import it.iCarrambaDT.cacciatoriDiVoti.entity.Voto;
 import it.iCarrambaDT.cacciatoriDiVoti.fileManager.SharedManager;
 import it.iCarrambaDT.cacciatoriDiVoti.helpers.LocationController;
 import it.iCarrambaDT.cacciatoriDiVoti.helpers.LocationUser;
@@ -112,6 +114,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         timer.stopTimer();
 
+        //Passo il oto all'activity successiva
         //System.out.println(materiaPlus.getSubject() + " " + materiaPlus.getMark());
         Intent i = new Intent(this,VotoCattActivity.class);
         Bundle votoBundle = new Bundle();
@@ -123,11 +126,17 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         i.putExtra("Voto", votoBundle);
 
-        materiaPlus.setCapture(1);
 
+        //Salvo i voto nel DB
+        DBManager dbm = DBManager.getInstance(this);
+
+        dbm.insertVoto(String.valueOf(materiaPlus.getMark()),materiaPlus.getSubject(),timer.getText().toString(), String.valueOf(materiaPlus.getCredits()),String.valueOf(materiaPlus.getRarity()));
+
+
+        //Salvo il voto nelle shared preferences
         SharedManager sm = new SharedManager(getSharedPreferences("lastLogs", MODE_PRIVATE));
 
-        sm.setLastVoto(materiaPlus.toString());
+        sm.setLastVoto(materiaPlus.getSubject() + "-" + materiaPlus.getEmissionTime());
 
         startActivity(i);
         finish();
@@ -172,17 +181,18 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         String[] materiaString = sm.getLastVoto();
 
-        if (materiaString[0].equals(materiaPlus.getSubject()) && materiaString[materiaString.length-1].equals("1"))
+        if (materiaString[0].equals(materiaPlus.getSubject()) && materiaString[1].equals(materiaPlus.getEmissionTime()))
             disableVoto();
         else {
-            System.out.println(materiaPlus.getLat() + " " + materiaPlus.getLng());
+
 
             //Per testing eliminare commento
             //createCircle(41.8525221, 12.62088576);
             createCircle(materiaPlus.getLat(), materiaPlus.getLng());
 
             //Sposto la telecara sul cerchio
-            CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(materiaPlus.getPos(), 100);
+            CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(materiaPlus.getLat(), materiaPlus.getLng()), 100);
+            System.out.println(materiaPlus.getPos());
             map.animateCamera(cameraUpdate);
 
             //Inizio a controllare la posizione

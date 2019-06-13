@@ -103,7 +103,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         String[] materiaString = sm.getLastVoto();
 
-        if (materiaString[0].equals(materiaPlus.getSubject()) && materiaString[materiaString.length-1].equals("1"))
+        if (materiaString[0].equals(materiaPlus.getSubject()) && materiaString[1].equals(materiaPlus.getEmissionTime()))
             disableVoto();
         else {
 
