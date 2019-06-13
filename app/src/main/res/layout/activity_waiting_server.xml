@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gifColor"
     tools:context="it.iCarrambaDT.cacciatoriDiVoti.activities.WaitingServerActivity">
 
     <it.iCarrambaDT.cacciatoriDiVoti.customViews.GifImageView
@@ -28,7 +27,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="10dp"
         android:text="@string/waitingServer"
-        android:textColor="@android:color/white"
+        android:textColor="@color/common_google_signin_btn_text_dark_focused"
         android:textSize="@dimen/textViewCfuDim"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
