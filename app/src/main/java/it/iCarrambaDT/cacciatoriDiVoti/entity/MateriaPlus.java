@@ -21,6 +21,13 @@ public class MateriaPlus extends Voto {
         super(subject, credits, mark, rarity);
     }
 
+    //TODO refactor di Voto in Materia, bidogna aggiornare anche qui (mobile) la materia
+    /*
+    public MateriaPlus(String subject, int credits){
+        super(subject, credits);
+    }
+    */
+
     public String getRequestedTime() {
         return requestedTime;
     }
@@ -71,8 +78,8 @@ public class MateriaPlus extends Voto {
 
     @Override
     public String toString(){
-        return getSubject()+"-"+getCredits()+"-"+getMark()+"-"
-                +getRarity()+"-"+getLat()+"-"+getLng()
-                +"-"+getEmissionTime() + "-" + getCapture();
+        return getSubject()+", "+getCredits()+", "+getMark()+", "
+                +getRarity()+", "+getLat()+", "+getLng()
+                +", "+getEmissionTime();
     }
 }

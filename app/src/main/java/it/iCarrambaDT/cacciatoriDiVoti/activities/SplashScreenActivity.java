@@ -14,7 +14,10 @@ import it.iCarrambaDT.cacciatoriDiVoti.R;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.MyTextView;
 import it.iCarrambaDT.cacciatoriDiVoti.databaseStuff.DBManager;
 import it.iCarrambaDT.cacciatoriDiVoti.databaseStuff.DBTask;
+import it.iCarrambaDT.cacciatoriDiVoti.entity.MateriaPlus;
 import it.iCarrambaDT.cacciatoriDiVoti.fileManager.FileTask;
+import it.iCarrambaDT.cacciatoriDiVoti.helpers.VotoAsyncTask;
+import it.iCarrambaDT.cacciatoriDiVoti.serverInteraction.ServerCaller;
 
 import static java.lang.Thread.sleep;
 

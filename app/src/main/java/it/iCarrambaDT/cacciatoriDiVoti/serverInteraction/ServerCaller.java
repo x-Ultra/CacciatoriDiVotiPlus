@@ -2,13 +2,11 @@ package it.iCarrambaDT.cacciatoriDiVoti.serverInteraction;
 
 import com.google.gson.Gson;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.net.Socket;
 
 import it.iCarrambaDT.cacciatoriDiVoti.entity.MateriaPlus;
@@ -40,8 +38,8 @@ public class ServerCaller {
         InputStream input;
         OutputStream output;
 
-        BufferedWriter buffWrite;
-        BufferedReader buffRead;
+        DataInputStream dataRead;
+        DataOutputStream dataWrite;
 
         String votoJson;
 
@@ -54,25 +52,29 @@ public class ServerCaller {
         output = socket.getOutputStream();
 
         //faccio sapere al client il tipo di laurea che possiede l'utente
-        buffWrite = new BufferedWriter(new OutputStreamWriter(output));
+        dataWrite = new DataOutputStream(output);
 
-        buffWrite.write(laurea);
+        dataWrite.writeUTF(laurea);
+        dataWrite.flush();
+
         //assumo che l'invio dei dati avvenga in modo corretto,
         //mi fido del controllo degli errori del livello di collegamento
         //e di quello di TCP
+        dataRead = new DataInputStream(input);
 
-        buffRead = new BufferedReader(new InputStreamReader(input));
         //ricevo il voto (in formato json) dal server
-        votoJson = buffRead.readLine();
-        //i dati saranno contenuti in un unica linea
+        votoJson = dataRead.readUTF();
 
+        //i dati saranno contenuti in un unica linea
         materiaPlus = gson.fromJson(votoJson, MateriaPlus.class);
 
-        input.close();
-        output.close();
+        dataRead.close();
 
         //chiudo la connessione
         socket.close();
+
+        //ok funge
+        //System.out.println("SERVER CALLER RECIVED: \n\n\n"+votoJson+"\n\n\n");
 
         return materiaPlus;
     }
