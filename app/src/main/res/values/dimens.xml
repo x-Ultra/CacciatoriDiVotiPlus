@@ -5,4 +5,6 @@
     <dimen name="textViewMateriaDim">35dp</dimen>
     <dimen name="textViewCfuDim">20dp</dimen>
     <dimen name="textViewEmptyDim">20dp</dimen>
+    <dimen name="datiBooklet">20dp</dimen>
+    <dimen name="infoDatiBooklet">30dp</dimen>
 </resources>

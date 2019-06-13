@@ -7,6 +7,31 @@
     tools:context=".activities.BookletActivity">
 
     <it.iCarrambaDT.cacciatoriDiVoti.customViews.MyTextView
+        android:id="@+id/tvEsami"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/nomeStudente"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/datiBooklet"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCrediti"
+        tools:text="@string/" />
+
+    <it.iCarrambaDT.cacciatoriDiVoti.customViews.MyTextView
+        android:id="@+id/tvCrediti"
+        android:layout_width="wrap_content"
+        android:layout_height="26dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/creditiOttenuti"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/datiBooklet"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvStudente" />
+
+    <it.iCarrambaDT.cacciatoriDiVoti.customViews.MyTextView
         android:id="@+id/tvEmptyBooklet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -33,12 +58,14 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <it.iCarrambaDT.cacciatoriDiVoti.customViews.MyTextView
-        android:id="@+id/myTextView2"
+        android:id="@+id/tvStudente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="it.iCarrambaDT.cacciatoriDiVoti.customViews.MyTextView"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        android:text="@string/nomeStudente"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/datiBooklet"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>

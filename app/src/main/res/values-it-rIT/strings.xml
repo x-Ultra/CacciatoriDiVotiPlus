@@ -26,4 +26,7 @@
     <string name="captTimeStr">Tempo di cattura:</string>
     <string name="cantConnectStr">Impossibbile contattare il Server</string>
     <string name="classificaButtonStr">Classifica</string>
+    <string name="nomeStudente">Nome Studente</string>
+    <string name="creditiOttenuti">Crediti Ottenuti</string>
+    <string name="materieOttenute">Esami Passati</string>
 </resources>

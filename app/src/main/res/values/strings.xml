@@ -25,4 +25,8 @@
     <string name="captTimeStr">Capture Time:</string>
     <string name="cantConnectStr">Can\'t connect to Server</string>
     <string name="classificaButtonStr">Standigs</string>
+    <string name="nomeStudente">Students Name:</string>
+    <string name="creditiOttenuti">Credits Earned:</string>
+    <string name="materieOttenute">Passed Exams:</string>
+
 </resources>
