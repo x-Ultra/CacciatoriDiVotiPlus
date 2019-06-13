@@ -10,6 +10,8 @@ public class SharedManager {
     private String LATLON_SEPARATOR = "-";
     private String VOTO_SEPARATOR  = "-";
 
+    public static final String nomeUtente = "nomeUtente";
+
     public SharedManager(SharedPreferences shared){
         this.shared = shared;
     }
@@ -28,6 +30,10 @@ public class SharedManager {
         SharedPreferences.Editor editor = shared.edit();
         editor.putString(lastVotoKey, value);
         editor.apply();
+    }
+
+    public String getUserDataInfo(String value){
+        return shared.getString(value, "notfound");
     }
 
     public String[] getCoords(String key){

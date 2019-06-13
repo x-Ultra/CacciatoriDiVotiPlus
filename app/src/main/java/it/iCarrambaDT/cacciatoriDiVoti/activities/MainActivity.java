@@ -39,6 +39,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //startActivity(new Intent(this, WaitingServerActivity.class));
 
+        startActivity(new Intent(this, BookletActivity.class));
+
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
 

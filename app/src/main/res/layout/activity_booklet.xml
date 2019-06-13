@@ -12,12 +12,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
         android:layout_marginTop="10dp"
-        android:text="@string/nomeStudente"
-        android:textColor="@android:color/black"
+        android:text="@string/materieOttenute"
         android:textSize="@dimen/datiBooklet"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvCrediti"
-        tools:text="@string/" />
+        tools:text="@string/materieOttenute" />
 
     <it.iCarrambaDT.cacciatoriDiVoti.customViews.MyTextView
         android:id="@+id/tvCrediti"
@@ -26,7 +25,6 @@
         android:layout_marginStart="50dp"
         android:layout_marginTop="10dp"
         android:text="@string/creditiOttenuti"
-        android:textColor="@android:color/black"
         android:textSize="@dimen/datiBooklet"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvStudente" />
@@ -51,21 +49,70 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvEsami" />
 
     <it.iCarrambaDT.cacciatoriDiVoti.customViews.MyTextView
         android:id="@+id/tvStudente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:text="@string/nomeStudente"
-        android:textColor="@android:color/black"
         android:textSize="@dimen/datiBooklet"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <it.iCarrambaDT.cacciatoriDiVoti.customViews.MyTextView
+        android:id="@+id/tvStudentsName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="68dp"
+        android:text="none"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/datiBooklet"
+        app:autoSizeMaxTextSize="20dp"
+        app:autoSizeMinTextSize="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvStudente"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <it.iCarrambaDT.cacciatoriDiVoti.customViews.MyTextView
+        android:id="@+id/tvCreditsEarned"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="68dp"
+        android:text="none"
+        android:textColor="@android:color/holo_green_light"
+        android:textSize="@dimen/datiBooklet"
+        app:autoSizeMaxTextSize="20dp"
+        app:autoSizeMinTextSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/tvCrediti"
+        app:layout_constraintTop_toBottomOf="@+id/tvStudentsName" />
+
+    <it.iCarrambaDT.cacciatoriDiVoti.customViews.MyTextView
+        android:id="@+id/tvPassedExams"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="68dp"
+        android:text="none"
+        android:textColor="@android:color/holo_green_light"
+        android:textSize="@dimen/datiBooklet"
+        app:autoSizeMaxTextSize="20dp"
+        app:autoSizeMinTextSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toEndOf="@+id/tvCrediti"
+        app:layout_constraintTop_toBottomOf="@+id/tvCreditsEarned" />
 </android.support.constraint.ConstraintLayout>
