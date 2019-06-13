@@ -12,9 +12,8 @@ import java.util.Vector;
 
 import it.iCarrambaDT.cacciatoriDiVoti.R;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.MyTextView;
-import it.iCarrambaDT.cacciatoriDiVoti.entity.Voto;
+import it.iCarrambaDT.cacciatoriDiVoti.entity.Materia;
 import it.iCarrambaDT.cacciatoriDiVoti.adapters.BookletAdapters;
-import it.iCarrambaDT.cacciatoriDiVoti.databaseStuff.DBHelper;
 import it.iCarrambaDT.cacciatoriDiVoti.databaseStuff.DBManager;
 
 public class BookletActivity extends AppCompatActivity {
@@ -41,7 +40,7 @@ public class BookletActivity extends AppCompatActivity {
         //Levare esto commmento per vedere qualche voto nel libretto
         insertFakeVoti();
 
-        Vector<Voto> votiOttenuti = dbManager.getVoti();
+        Vector<Materia> votiOttenuti = dbManager.getVoti();
         if(votiOttenuti.size() != 0)
             tvEmptyBooklet.setVisibility(View.GONE);
 

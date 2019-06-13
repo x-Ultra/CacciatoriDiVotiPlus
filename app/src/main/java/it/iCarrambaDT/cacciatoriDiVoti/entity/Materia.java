@@ -3,20 +3,16 @@ package it.iCarrambaDT.cacciatoriDiVoti.entity;
 
 import com.google.android.gms.maps.model.LatLng;
 
-public class Voto {
+public class Materia {
+
     private String subject;
     private int credits;
     private int mark;
     private int rarity;
-    private int capture;
-    private LatLng pos;
+
     private Double lat;
     private Double lng;
     private int tempoCattura; //in cs
-
-    public LatLng getPos() {
-        return pos;
-    }
 
     public Double getLat() {
         return lat;
@@ -26,41 +22,28 @@ public class Voto {
         return lng;
     }
 
-    public Voto(String s, int c, int m, int r){
-        subject=s;
-        credits=c;
-        mark=m;
-        rarity=r;
-        lat=0.0;
-        lng=0.0;
-        pos=new LatLng(lat,lng);
-        capture=0;
 
-
+    public Materia(String subject, int credits, int mark, int rarity, int tempoCattura){
+        this.subject = subject;
+        this.credits = credits;
+        this.mark = mark;
+        this.rarity = rarity;
+        this.tempoCattura = tempoCattura;
     }
-    public Voto(String s, int c, int m, int r, int cs){
-        subject=s;
-        credits=c;
-        mark=m;
-        rarity=r;
-        lat=0.0;
-        lng=0.0;
-        pos=new LatLng(lat,lng);
-        capture=0;
-        tempoCattura=cs;
 
-
+    public Materia(String subject, int credits, int mark, int rarity){
+        this.subject = subject;
+        this.credits = credits;
+        this.mark = mark;
+        this.rarity = rarity;
     }
 
     public int getTempoCattura() {
         return tempoCattura;
     }
 
-    public  Voto() {
+    public Materia() {
 
-    }
-    public int getCapture() {
-        return capture;
     }
 
     public void setLat(Double lat) {
@@ -71,12 +54,6 @@ public class Voto {
         this.lng = lng;
     }
 
-    public void setCapture(int capture) {
-        this.capture = capture;
-    }
-    public void setPos(LatLng pos) {
-        this.pos = pos;
-    }
 
     public void setMark(int mark){
         this.mark=mark;

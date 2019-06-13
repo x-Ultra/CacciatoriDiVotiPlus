@@ -1,17 +1,14 @@
 package it.iCarrambaDT.cacciatoriDiVoti.databaseStuff;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.support.annotation.Nullable;
 
-import java.util.Random;
 import java.util.Vector;
 
-import it.iCarrambaDT.cacciatoriDiVoti.entity.Voto;
+import it.iCarrambaDT.cacciatoriDiVoti.entity.Materia;
 
 public class DBHelper extends SQLiteOpenHelper {
 
@@ -108,7 +105,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
     */
 
-    public Vector<Voto> getVotiInOrder(String rarity) {
+    public Vector<Materia> getVotiInOrder(String rarity) {
         String query;
         query = "SELECT * FROM "+TABLE_NAME+" WHERE Rarita='"+rarity+"' ORDER BY TempoCattura LIMIT 10;";
 
@@ -118,10 +115,10 @@ public class DBHelper extends SQLiteOpenHelper {
             return new Vector<>();
         }
 
-        Vector<Voto> vectVoto = new Vector<>();
+        Vector<Materia> vectMateria = new Vector<>();
         do {
 
-            vectVoto.add( new Voto(cursor.getString(cursor.getColumnIndex("Materia")),
+            vectMateria.add( new Materia(cursor.getString(cursor.getColumnIndex("Materia")),
                     Integer.parseInt(cursor.getString(cursor.getColumnIndex("Crediti"))),
                     Integer.parseInt(cursor.getString(cursor.getColumnIndex("Voto"))),
                     Integer.parseInt(cursor.getString(cursor.getColumnIndex("Rarita"))),
@@ -131,11 +128,11 @@ public class DBHelper extends SQLiteOpenHelper {
 
         cursor.close();
 
-        return vectVoto;
+        return vectMateria;
 
 
     }
-    public Vector<Voto> getObtainedVoti(){
+    public Vector<Materia> getObtainedVoti(){
         String query;
         query = "SELECT * FROM "+TABLE_NAME+";";
 
@@ -145,10 +142,10 @@ public class DBHelper extends SQLiteOpenHelper {
             return new Vector<>();
         }
 
-        Vector<Voto> vectVoto = new Vector<>();
+        Vector<Materia> vectMateria = new Vector<>();
         do {
 
-            vectVoto.add( new Voto(cursor.getString(cursor.getColumnIndex("Materia")),
+            vectMateria.add( new Materia(cursor.getString(cursor.getColumnIndex("Materia")),
                     Integer.parseInt(cursor.getString(cursor.getColumnIndex("Crediti"))),
                     Integer.parseInt(cursor.getString(cursor.getColumnIndex("Voto"))),
                     Integer.parseInt(cursor.getString(cursor.getColumnIndex("Rarita"))),
@@ -158,11 +155,11 @@ public class DBHelper extends SQLiteOpenHelper {
 
         cursor.close();
 
-        return vectVoto;
+        return vectMateria;
     }
 
     //data nome materia ritornare classe voto
-    public Voto getVoto(String materia){
+    public Materia getVoto(String materia){
         String query;
         query = "SELECT * FROM "+TABLE_NAME+" WHERE Materia = '"+materia+"';";
 
@@ -172,7 +169,7 @@ public class DBHelper extends SQLiteOpenHelper {
             return null;
         }
 
-        Voto voto = new Voto(cursor.getString(cursor.getColumnIndex("Materia")),
+        Materia voto = new Materia(cursor.getString(cursor.getColumnIndex("Materia")),
                 Integer.parseInt(cursor.getString(cursor.getColumnIndex("Crediti"))),
                 Integer.parseInt(cursor.getString(cursor.getColumnIndex("Voto"))),
                 Integer.parseInt(cursor.getString(cursor.getColumnIndex("Rarita"))),
@@ -184,9 +181,9 @@ public class DBHelper extends SQLiteOpenHelper {
     //Non dovrebbe più essere usata
     /*
     //dare voto (classe) con rarità minore o uguale ad uno dato
-    public Voto getVotoRarLessEqual(int num){
+    public Materia getVotoRarLessEqual(int num){
         String query;
-        query = "SELECT * FROM "+TABLE_NAME+" WHERE Rarita <= "+num+" AND Voto <> 31;";
+        query = "SELECT * FROM "+TABLE_NAME+" WHERE Rarita <= "+num+" AND Materia <> 31;";
         Cursor cursor = this.getWritableDatabase().rawQuery(query, null);
 
         if (!(cursor.moveToFirst()) || cursor.getCount() == 0){
@@ -195,9 +192,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
         cursor.moveToPosition(new Random().nextInt(cursor.getCount()));
 
-        Voto voto = new Voto(cursor.getString(cursor.getColumnIndex("Materia")),
+        Materia voto = new Materia(cursor.getString(cursor.getColumnIndex("Materia")),
                 Integer.parseInt(cursor.getString(cursor.getColumnIndex("Crediti"))),
-                Integer.parseInt(cursor.getString(cursor.getColumnIndex("Voto"))),
+                Integer.parseInt(cursor.getString(cursor.getColumnIndex("Materia"))),
                 Integer.parseInt(cursor.getString(cursor.getColumnIndex("Rarita"))));
 
         cursor.close();

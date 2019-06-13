@@ -1,6 +1,5 @@
 package it.iCarrambaDT.cacciatoriDiVoti.adapters;
 
-import android.database.Cursor;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,13 +8,13 @@ import android.view.ViewGroup;
 import java.util.Vector;
 
 import it.iCarrambaDT.cacciatoriDiVoti.R;
-import it.iCarrambaDT.cacciatoriDiVoti.entity.Voto;
+import it.iCarrambaDT.cacciatoriDiVoti.entity.Materia;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.MyTextView;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.RarityImageView;
 
 public class BookletAdapters extends RecyclerView.Adapter<BookletAdapters.MyViewHolder> {
 
-    private Vector<Voto> voti;
+    private Vector<Materia> voti;
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
@@ -34,7 +33,7 @@ public class BookletAdapters extends RecyclerView.Adapter<BookletAdapters.MyView
         }
     }
 
-    public BookletAdapters(Vector<Voto> voti) {
+    public BookletAdapters(Vector<Materia> voti) {
         this.voti = voti;
     }
 

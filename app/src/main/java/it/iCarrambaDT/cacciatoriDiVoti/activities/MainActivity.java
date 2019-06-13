@@ -1,15 +1,16 @@
 package it.iCarrambaDT.cacciatoriDiVoti.activities;
 
 import android.content.Intent;
+import android.support.constraint.ConstraintLayout;
+import android.support.constraint.ConstraintSet;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import java.text.ParseException;
-import java.util.Calendar;
-import java.util.Date;
 
 import it.iCarrambaDT.cacciatoriDiVoti.R;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.GifImageView;
@@ -19,7 +20,6 @@ import it.iCarrambaDT.cacciatoriDiVoti.customViews.RarityImageView;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.TimerListener;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.TimerTextView;
 import it.iCarrambaDT.cacciatoriDiVoti.entity.MateriaPlus;
-import it.iCarrambaDT.cacciatoriDiVoti.entity.Voto;
 import it.iCarrambaDT.cacciatoriDiVoti.fileManager.SharedManager;
 import it.iCarrambaDT.cacciatoriDiVoti.helpers.VotoAsyncTask;
 import it.iCarrambaDT.cacciatoriDiVoti.helpers.VotoListener;
@@ -30,6 +30,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     RarityImageView rarityView;
     MyButton mapButton;
     MyButton gradesButton;
+    MyButton standingsButton;
+    GifImageView gifView;
     ProgressBar prog;
 
     @Override
@@ -75,9 +77,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             startActivity(new Intent(this,MapActivity.class));
 
-        } else {
+        } else if (v.getId() == R.id.gradesButton) {
 
             startActivity(new Intent(this, BookletActivity.class));
+
+        } else if (v.getId() == R.id.classificaButton) {
+
+            startActivity(new Intent(this, ClassificaActivity.class));
         }
 
     }
@@ -98,10 +104,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onTaskFinished(MateriaPlus materiaPlus) {
 
+
+        if (materiaPlus == null) {
+
+            Toast.makeText(this,R.string.cantConnectStr,Toast.LENGTH_LONG).show();
+
+            gradesButton = findViewById(R.id.gradesButton);
+            gradesButton.setOnClickListener(this);
+
+            standingsButton = findViewById(R.id.classificaButton);
+            standingsButton.setOnClickListener(this);
+
+            return;
+        }
+
+        ConstraintLayout constraintLayout = findViewById(R.id.parent);
+        ConstraintSet constraintSet = new ConstraintSet();
+        constraintSet.clone(constraintLayout);
+        constraintSet.connect(R.id.tempoTextView,ConstraintSet.TOP,R.id.rarityImageMain,ConstraintSet.BOTTOM,8);
+        constraintSet.applyTo(constraintLayout);
+
         //Controllo se il voto è già stato catturato
         SharedManager sm = new SharedManager(getSharedPreferences("lastLogs", MODE_PRIVATE));
 
+
         String[] materiaString = sm.getLastVoto();
+
 
         if (materiaString[0].equals(materiaPlus.getSubject()) && materiaString[1].equals(materiaPlus.getEmissionTime()))
             disableVoto();
@@ -138,6 +166,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         gradesButton.setOnClickListener(this);
 
 
+        standingsButton = findViewById(R.id.classificaButton);
+        standingsButton.setOnClickListener(this);
+
         //Nascondo la progress bar
         prog = findViewById(R.id.votoProgressBarMain);
         prog.setVisibility(View.INVISIBLE);
@@ -152,6 +183,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onResume();
 
         setContentView(R.layout.activity_main);
+
+        gifView = findViewById(R.id.gifImageViewMain);
+        gifView.setGifImageResource(R.drawable.loading);
 
         //System.out.println("ciao");
         //Chiedo (rarità) del voto al control

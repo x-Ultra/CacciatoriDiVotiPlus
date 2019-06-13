@@ -16,6 +16,7 @@ public class VotoCattActivity extends AppCompatActivity implements View.OnClickL
     TextView esameView;
     TextView creditiView;
     TextView votoView;
+    TextView catturaView;
     RarityImageView raritaView;
     Button homeBtn;
 
@@ -30,7 +31,7 @@ public class VotoCattActivity extends AppCompatActivity implements View.OnClickL
 
         Intent i = getIntent();
 
-        Bundle votoBundle = i.getBundleExtra("Voto");
+        Bundle votoBundle = i.getBundleExtra("Bundle");
 
         //Imposto i campi
         esameView = findViewById(R.id.corsoTW);
@@ -45,6 +46,9 @@ public class VotoCattActivity extends AppCompatActivity implements View.OnClickL
         raritaView = findViewById(R.id.rarityImageView);
         raritaView.changeRarity(votoBundle.getInt("Rarita"));
 
+        catturaView = findViewById(R.id.tvCaptTime);
+        catturaView.setText(votoBundle.getString("TempoCattura"));
+
         homeBtn = findViewById(R.id.myButton);
         homeBtn.setOnClickListener(this);
 
@@ -52,7 +56,7 @@ public class VotoCattActivity extends AppCompatActivity implements View.OnClickL
 
     @Override
     public void onClick(View v) {
-        startActivity(new Intent(this, WaitingServerActivity.class));
+        startActivity(new Intent(this, MainActivity.class));
         finish();
     }
 }

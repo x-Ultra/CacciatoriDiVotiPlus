@@ -7,18 +7,15 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.Window;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.Vector;
 
 import it.iCarrambaDT.cacciatoriDiVoti.R;
-import it.iCarrambaDT.cacciatoriDiVoti.adapters.BookletAdapters;
 import it.iCarrambaDT.cacciatoriDiVoti.adapters.ClassificaAdapter;
-import it.iCarrambaDT.cacciatoriDiVoti.customViews.MyTextView;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.PageListener;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.PageView;
 import it.iCarrambaDT.cacciatoriDiVoti.databaseStuff.DBManager;
-import it.iCarrambaDT.cacciatoriDiVoti.entity.Voto;
+import it.iCarrambaDT.cacciatoriDiVoti.entity.Materia;
 
 public class ClassificaActivity extends AppCompatActivity implements PageListener {
 
@@ -63,7 +60,7 @@ public class ClassificaActivity extends AppCompatActivity implements PageListene
         tvEmpty = findViewById(R.id.tvEmptyClassifica);
 
 
-        Vector<Voto> votiOttenuti = dbManager.getVotiInOrder(1);
+        Vector<Materia> votiOttenuti = dbManager.getVotiInOrder(1);
 
         //Se non ce ne sono mostro un messaggio
         if(votiOttenuti.size() != 0)
@@ -78,7 +75,7 @@ public class ClassificaActivity extends AppCompatActivity implements PageListene
 
     @Override
     public void onPageChanged(int currPage) {
-        Vector<Voto> votiOttenuti = dbManager.getVotiInOrder(currPage+1);
+        Vector<Materia> votiOttenuti = dbManager.getVotiInOrder(currPage+1);
 
         //Se non ce ne sono mostro un messaggio
         if(votiOttenuti.size() == 0)
