@@ -25,7 +25,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rarityImageMain" />
+        app:layout_constraintTop_toBottomOf="@+id/gifImageView" />
 
     <it.iCarrambaDT.cacciatoriDiVoti.customViews.TimerTextView
         android:id="@+id/timerTextViewMain"
@@ -48,8 +48,7 @@
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/loading" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <it.iCarrambaDT.cacciatoriDiVoti.customViews.MyButton
         android:id="@+id/mapButton"
@@ -105,6 +104,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gradesButton" />
+
+    <it.iCarrambaDT.cacciatoriDiVoti.customViews.GifImageView
+        android:id="@+id/gifImageViewMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>

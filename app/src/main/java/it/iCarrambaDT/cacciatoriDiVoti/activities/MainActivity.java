@@ -1,6 +1,8 @@
 package it.iCarrambaDT.cacciatoriDiVoti.activities;
 
 import android.content.Intent;
+import android.support.constraint.ConstraintLayout;
+import android.support.constraint.ConstraintSet;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +13,7 @@ import android.widget.Toast;
 import java.text.ParseException;
 
 import it.iCarrambaDT.cacciatoriDiVoti.R;
+import it.iCarrambaDT.cacciatoriDiVoti.customViews.GifImageView;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.MyButton;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.MyTextView;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.RarityImageView;
@@ -28,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     MyButton mapButton;
     MyButton gradesButton;
     MyButton standingsButton;
+    GifImageView gifView;
     ProgressBar prog;
 
     @Override
@@ -113,6 +117,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             return;
         }
+
+        ConstraintLayout constraintLayout = findViewById(R.id.parent);
+        ConstraintSet constraintSet = new ConstraintSet();
+        constraintSet.clone(constraintLayout);
+        constraintSet.connect(R.id.tempoTextView,ConstraintSet.TOP,R.id.rarityImageMain,ConstraintSet.BOTTOM,8);
+        constraintSet.applyTo(constraintLayout);
+
         //Controllo se il voto è già stato catturato
         SharedManager sm = new SharedManager(getSharedPreferences("lastLogs", MODE_PRIVATE));
 
@@ -172,6 +183,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onResume();
 
         setContentView(R.layout.activity_main);
+
+        gifView = findViewById(R.id.gifImageViewMain);
+        gifView.setGifImageResource(R.drawable.loading);
 
         //System.out.println("ciao");
         //Chiedo (rarità) del voto al control
