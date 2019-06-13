@@ -23,4 +23,5 @@
     <string name="noElementsInBooklet">Non hai ancora nessun voto :(</string>
     <string name="waitingServer">Sto Aspettando Il Server</string>
     <string name="serverError">Comunicazione con il server fallita</string>
+    <string name="captTimeStr">Tempo di cattura:</string>
 </resources>

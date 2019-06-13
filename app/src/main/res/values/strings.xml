@@ -22,4 +22,5 @@
     <string name="waitingServer">Waiting Response From Server</string>
     <string name="serverError">Unable to reach the server</string>
     <string name="sharedGenerated">SharedPreference generated</string>
+    <string name="captTimeStr">Capture Time:</string>
 </resources>

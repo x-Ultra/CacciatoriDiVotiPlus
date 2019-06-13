@@ -1,24 +1,13 @@
 package it.iCarrambaDT.cacciatoriDiVoti.helpers;
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.Socket;
 
 import it.iCarrambaDT.cacciatoriDiVoti.R;
 import it.iCarrambaDT.cacciatoriDiVoti.entity.MateriaPlus;
-import it.iCarrambaDT.cacciatoriDiVoti.entity.Voto;
 import it.iCarrambaDT.cacciatoriDiVoti.serverInteraction.ServerCaller;
 
 public class VotoAsyncTask extends AsyncTask<Context, Void, MateriaPlus>{

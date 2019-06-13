@@ -54,17 +54,27 @@ public class TimerTextView extends android.support.v7.widget.AppCompatTextView {
         long onlyMillis = time%1000;
         long onlySec = ((time - onlyMillis)/1000)%60;
         long onlyMin = ((time - onlyMillis - onlySec*1000)/60000);
-        if (onlyMillis >= 100)
-            if (onlySec >= 10)
-                this.setText(onlyMin + ":" + onlySec + ":" + onlyMillis/10);
-            else
-                this.setText(onlyMin + ":0" + onlySec + ":" + onlyMillis/10);
+        String millis;
+        String seconds;
+        String minutes;
+
+        if (onlyMillis < 100)
+            millis = ":0" + onlyMillis/10;
         else
-            if (onlySec >= 10)
-                this.setText(onlyMin + ":" + onlySec + ":0" + onlyMillis/10);
-            else
-                this.setText(onlyMin + ":0" + onlySec + ":0" + onlyMillis/10);
+            millis = ":" + onlyMillis/10;
+
+        if (onlySec < 10)
+            seconds = ":0" + onlySec;
+        else
+            seconds = ":" + onlySec;
+
+        if (onlyMin < 10)
+            this.setText("0" + onlyMin + seconds + millis);
+        else
+            this.setText(onlyMin + seconds + millis);
     }
+
+
 
     public void stopTimer() {
         if (cd != null)

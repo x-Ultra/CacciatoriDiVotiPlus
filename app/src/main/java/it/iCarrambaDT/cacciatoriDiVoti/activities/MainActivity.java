@@ -8,18 +8,14 @@ import android.view.Window;
 import android.widget.ProgressBar;
 
 import java.text.ParseException;
-import java.util.Calendar;
-import java.util.Date;
 
 import it.iCarrambaDT.cacciatoriDiVoti.R;
-import it.iCarrambaDT.cacciatoriDiVoti.customViews.GifImageView;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.MyButton;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.MyTextView;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.RarityImageView;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.TimerListener;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.TimerTextView;
 import it.iCarrambaDT.cacciatoriDiVoti.entity.MateriaPlus;
-import it.iCarrambaDT.cacciatoriDiVoti.entity.Voto;
 import it.iCarrambaDT.cacciatoriDiVoti.fileManager.SharedManager;
 import it.iCarrambaDT.cacciatoriDiVoti.helpers.VotoAsyncTask;
 import it.iCarrambaDT.cacciatoriDiVoti.helpers.VotoListener;

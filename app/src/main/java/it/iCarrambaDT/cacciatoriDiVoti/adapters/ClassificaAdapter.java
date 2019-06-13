@@ -1,6 +1,5 @@
 package it.iCarrambaDT.cacciatoriDiVoti.adapters;
 
-import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,12 +9,11 @@ import java.util.Vector;
 
 import it.iCarrambaDT.cacciatoriDiVoti.R;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.MyTextView;
-import it.iCarrambaDT.cacciatoriDiVoti.customViews.RarityImageView;
-import it.iCarrambaDT.cacciatoriDiVoti.entity.Voto;
+import it.iCarrambaDT.cacciatoriDiVoti.entity.Materia;
 
 public class ClassificaAdapter extends RecyclerView.Adapter<ClassificaAdapter.MyViewHolder>  {
 
-    private Vector<Voto> voti;
+    private Vector<Materia> voti;
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
@@ -33,7 +31,7 @@ public class ClassificaAdapter extends RecyclerView.Adapter<ClassificaAdapter.My
         }
     }
 
-    public ClassificaAdapter(Vector<Voto> voti) {
+    public ClassificaAdapter(Vector<Materia> voti) {
         this.voti = voti;
     }
 
@@ -52,7 +50,7 @@ public class ClassificaAdapter extends RecyclerView.Adapter<ClassificaAdapter.My
         myViewHolder.materia.setText(voti.get(i).getSubject());
         myViewHolder.voto.setText(Integer.toString(voti.get(i).getMark()));
         myViewHolder.cfu.setText(Integer.toString(i+1) + ".");
-        myViewHolder.tempoCattura.setText(Voto.catturaToString(voti.get(i).getTempoCattura()));
+        myViewHolder.tempoCattura.setText(Materia.catturaToString(voti.get(i).getTempoCattura()));
 
     }
 

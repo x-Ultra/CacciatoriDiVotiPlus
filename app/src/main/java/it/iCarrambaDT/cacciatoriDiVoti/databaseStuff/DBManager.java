@@ -2,13 +2,9 @@ package it.iCarrambaDT.cacciatoriDiVoti.databaseStuff;
 
 import android.content.Context;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.Vector;
 
-import it.iCarrambaDT.cacciatoriDiVoti.entity.Voto;
+import it.iCarrambaDT.cacciatoriDiVoti.entity.Materia;
 
 public class DBManager {
 
@@ -32,11 +28,11 @@ public class DBManager {
         this.context = context;
     }
 
-    public Vector<Voto> getVoti(){
+    public Vector<Materia> getVoti(){
         return helper.getObtainedVoti();
     }
 
-    public Vector<Voto> getVotiInOrder(int rarity){
+    public Vector<Materia> getVotiInOrder(int rarity){
         return helper.getVotiInOrder(String.valueOf(rarity));
     }
 
@@ -80,7 +76,7 @@ public class DBManager {
         helper.insertNewVoto(voto,materia,tempoCattura,crediti,rarita);
     }
 
-    public Voto getVoto(String materia){
+    public Materia getVoto(String materia){
         return helper.getVoto(materia);
     }
 

@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class MateriaPlus extends Voto {
+public class MateriaPlus extends Materia {
 
     //laurea a cui appartine quel voto
     private String laurea;
@@ -21,7 +21,7 @@ public class MateriaPlus extends Voto {
         super(subject, credits, mark, rarity);
     }
 
-    //TODO refactor di Voto in Materia, bidogna aggiornare anche qui (mobile) la materia
+    //TODO refactor di Materia in Materia, bidogna aggiornare anche qui (mobile) la materia
     /*
     public MateriaPlus(String subject, int credits){
         super(subject, credits);

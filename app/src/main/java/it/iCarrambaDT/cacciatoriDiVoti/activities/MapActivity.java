@@ -28,8 +28,6 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.text.ParseException;
-import java.util.Calendar;
-import java.util.Date;
 
 import it.iCarrambaDT.cacciatoriDiVoti.R;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.MyTextView;
@@ -38,7 +36,6 @@ import it.iCarrambaDT.cacciatoriDiVoti.customViews.TimerListener;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.TimerTextView;
 import it.iCarrambaDT.cacciatoriDiVoti.databaseStuff.DBManager;
 import it.iCarrambaDT.cacciatoriDiVoti.entity.MateriaPlus;
-import it.iCarrambaDT.cacciatoriDiVoti.entity.Voto;
 import it.iCarrambaDT.cacciatoriDiVoti.fileManager.SharedManager;
 import it.iCarrambaDT.cacciatoriDiVoti.helpers.LocationController;
 import it.iCarrambaDT.cacciatoriDiVoti.helpers.LocationUser;
@@ -116,15 +113,19 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         //Passo il oto all'activity successiva
         //System.out.println(materiaPlus.getSubject() + " " + materiaPlus.getMark());
+
+        //Calcolo il tempo di cattura
+        String tempoCattura = timer.getText().subSequence(0,5).toString();
+
         Intent i = new Intent(this,VotoCattActivity.class);
         Bundle votoBundle = new Bundle();
         votoBundle.putString("Materia", materiaPlus.getSubject());
         votoBundle.putInt("Crediti", materiaPlus.getCredits());
         votoBundle.putInt("Voto", materiaPlus.getMark());
         votoBundle.putInt("Rarita", materiaPlus.getRarity());
-        votoBundle.putString("TempoCattura", timer.getText().toString());
+        votoBundle.putString("TempoCattura", tempoCattura);
 
-        i.putExtra("Voto", votoBundle);
+        i.putExtra("Bundle", votoBundle);
 
 
         //Salvo i voto nel DB
@@ -192,7 +193,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
             //Sposto la telecara sul cerchio
             CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(materiaPlus.getLat(), materiaPlus.getLng()), 100);
-            System.out.println(materiaPlus.getPos());
+            System.out.println(materiaPlus.getLat() +"-"+ materiaPlus.getLng());
             map.animateCamera(cameraUpdate);
 
             //Inizio a controllare la posizione
