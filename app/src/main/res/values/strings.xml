@@ -23,4 +23,6 @@
     <string name="serverError">Unable to reach the server</string>
     <string name="sharedGenerated">SharedPreference generated</string>
     <string name="captTimeStr">Capture Time:</string>
+    <string name="cantConnectStr">Can\'t connect to Server</string>
+    <string name="classificaButtonStr">Standigs</string>
 </resources>

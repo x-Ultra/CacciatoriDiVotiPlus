@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import java.text.ParseException;
 
@@ -26,12 +27,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     RarityImageView rarityView;
     MyButton mapButton;
     MyButton gradesButton;
+    MyButton standingsButton;
     ProgressBar prog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        startActivity(new Intent(this, WaitingServerActivity.class));
+        //startActivity(new Intent(this, WaitingServerActivity.class));
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
@@ -71,9 +73,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             startActivity(new Intent(this,MapActivity.class));
 
-        } else {
+        } else if (v.getId() == R.id.gradesButton) {
 
             startActivity(new Intent(this, BookletActivity.class));
+
+        } else if (v.getId() == R.id.classificaButton) {
+
+            startActivity(new Intent(this, ClassificaActivity.class));
         }
 
     }
@@ -94,10 +100,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onTaskFinished(MateriaPlus materiaPlus) {
 
+
+        if (materiaPlus == null) {
+
+            Toast.makeText(this,R.string.cantConnectStr,Toast.LENGTH_LONG).show();
+
+            gradesButton = findViewById(R.id.gradesButton);
+            gradesButton.setOnClickListener(this);
+
+            standingsButton = findViewById(R.id.classificaButton);
+            standingsButton.setOnClickListener(this);
+
+            return;
+        }
         //Controllo se il voto è già stato catturato
         SharedManager sm = new SharedManager(getSharedPreferences("lastLogs", MODE_PRIVATE));
 
+
         String[] materiaString = sm.getLastVoto();
+
 
         if (materiaString[0].equals(materiaPlus.getSubject()) && materiaString[1].equals(materiaPlus.getEmissionTime()))
             disableVoto();
@@ -133,6 +154,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         gradesButton = findViewById(R.id.gradesButton);
         gradesButton.setOnClickListener(this);
 
+
+        standingsButton = findViewById(R.id.classificaButton);
+        standingsButton.setOnClickListener(this);
 
         //Nascondo la progress bar
         prog = findViewById(R.id.votoProgressBarMain);

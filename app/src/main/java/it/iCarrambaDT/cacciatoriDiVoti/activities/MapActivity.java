@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -162,6 +163,14 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     //Set up activity
     //Quando è pronta sia la mappa che il materiaPlus imposto tutta la activity
     private void setUpActivity() {
+
+
+        if (materiaPlus == null) {
+
+            Toast.makeText(this,R.string.cantConnectStr,Toast.LENGTH_LONG).show();
+
+            return;
+        }
 
         //Elimino il veccchio cerchio
         removeCircle();
