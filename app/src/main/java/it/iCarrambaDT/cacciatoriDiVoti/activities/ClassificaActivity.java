@@ -59,7 +59,7 @@ public class ClassificaActivity extends AppCompatActivity implements PageListene
 
         tvEmpty = findViewById(R.id.tvEmptyClassifica);
 
-
+        dbManager.createDBorCheck();
         Vector<Materia> votiOttenuti = dbManager.getVotiInOrder(1);
 
         //Se non ce ne sono mostro un messaggio

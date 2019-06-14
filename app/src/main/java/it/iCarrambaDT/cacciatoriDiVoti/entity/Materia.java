@@ -97,17 +97,17 @@ public class Materia {
     //trasforma cs in hh:cs
     public static String catturaToString(int tempo) {
 
-        int min = tempo/100;
+        int min = tempo/6000;
         String minS;
         if (min < 10)
             minS = "0" + String.valueOf(min);
         else
             minS = String.valueOf(min);
 
-        if (tempo-min*100 <10)
-            return minS + ":0" + String.valueOf(tempo-min*100);
+        if ((tempo-min*6000)/100 <10)
+            return minS + ":0" + String.valueOf((tempo-min*6000)/100);
         else
-            return minS + ":" + String.valueOf(tempo-min*100);
+            return minS + ":" + String.valueOf((tempo-min*6000)/100);
     }
 
 }

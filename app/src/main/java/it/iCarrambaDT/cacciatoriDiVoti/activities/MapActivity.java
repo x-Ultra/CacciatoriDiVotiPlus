@@ -120,10 +120,11 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         String minLeft = timer.getText().subSequence(0,2).toString();
         String secLeft = timer.getText().subSequence(3,5).toString();
 
-        int msLeft = Integer.parseInt(minLeft)*6000 + Integer.parseInt(secLeft)*100;
+        int csLeft = Integer.parseInt(minLeft)*6000 + Integer.parseInt(secLeft)*100;
 
-        String tempoCattura = Materia.catturaToString(materiaPlus.getTimeToLiveMinutes()*6000 - msLeft);
+        String tempoCattura = Materia.catturaToString(materiaPlus.getTimeToLiveMinutes()*6000 - csLeft);
 
+        System.out.println(materiaPlus.getTimeToLiveMinutes()+ "-" + minLeft +"-"+secLeft+"-"+tempoCattura+ "-" + csLeft);
 
         Intent i = new Intent(this,VotoCattActivity.class);
         Bundle votoBundle = new Bundle();
@@ -138,8 +139,9 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         //Salvo i voto nel DB
         DBManager dbm = DBManager.getInstance(this);
+        dbm.createDBorCheck();
 
-        dbm.insertVoto(String.valueOf(materiaPlus.getMark()),materiaPlus.getSubject(),timer.getText().toString(), String.valueOf(materiaPlus.getCredits()),String.valueOf(materiaPlus.getRarity()));
+        dbm.insertVoto(String.valueOf(materiaPlus.getMark()),materiaPlus.getSubject(),String.valueOf(materiaPlus.getTimeToLiveMinutes()*6000 - csLeft), String.valueOf(materiaPlus.getCredits()),String.valueOf(materiaPlus.getRarity()));
 
 
         //Salvo il voto nelle shared preferences

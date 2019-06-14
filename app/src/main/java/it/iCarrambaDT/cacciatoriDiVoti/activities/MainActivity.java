@@ -118,6 +118,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             standingsButton = findViewById(R.id.classificaButton);
             standingsButton.setOnClickListener(this);
 
+            MyTextView remText = findViewById(R.id.tempoTextView);
+            remText.setText(R.string.cantConnectStr);
+
+            timerTextView = findViewById(R.id.timerTextViewMain);
+            timerTextView.setVisibility(View.INVISIBLE);
 
             return;
         }
@@ -163,7 +168,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         gradesButton = findViewById(R.id.gradesButton);
         gradesButton.setOnClickListener(this);
-
 
         standingsButton = findViewById(R.id.classificaButton);
         standingsButton.setOnClickListener(this);
