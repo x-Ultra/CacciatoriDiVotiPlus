@@ -36,6 +36,7 @@ import it.iCarrambaDT.cacciatoriDiVoti.customViews.RarityImageView;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.TimerListener;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.TimerTextView;
 import it.iCarrambaDT.cacciatoriDiVoti.databaseStuff.DBManager;
+import it.iCarrambaDT.cacciatoriDiVoti.entity.Materia;
 import it.iCarrambaDT.cacciatoriDiVoti.entity.MateriaPlus;
 import it.iCarrambaDT.cacciatoriDiVoti.fileManager.SharedManager;
 import it.iCarrambaDT.cacciatoriDiVoti.helpers.LocationController;
@@ -116,7 +117,13 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         //System.out.println(materiaPlus.getSubject() + " " + materiaPlus.getMark());
 
         //Calcolo il tempo di cattura
-        String tempoCattura = timer.getText().subSequence(0,5).toString();
+        String minLeft = timer.getText().subSequence(0,2).toString();
+        String secLeft = timer.getText().subSequence(3,5).toString();
+
+        int msLeft = Integer.parseInt(minLeft)*6000 + Integer.parseInt(secLeft)*100;
+
+        String tempoCattura = Materia.catturaToString(materiaPlus.getTimeToLiveMinutes()*6000 - msLeft);
+
 
         Intent i = new Intent(this,VotoCattActivity.class);
         Bundle votoBundle = new Bundle();

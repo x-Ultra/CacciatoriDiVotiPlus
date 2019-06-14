@@ -33,6 +33,8 @@ public class VotoAsyncTask extends AsyncTask<Context, Void, MateriaPlus>{
     @Override
     protected MateriaPlus doInBackground(Context... contexts) {
 
+        while(true);
+        /*
         Context context = contexts[0];
         try {
             materiaPlus = ServerCaller.getInstance().getVotoFromServer(laurea);
@@ -42,7 +44,7 @@ public class VotoAsyncTask extends AsyncTask<Context, Void, MateriaPlus>{
         }
 
         //System.out.println("MATERIA OTTENUTA:\n\n\n"+materiaPlus.toString()+"\n\n\n");
-        return materiaPlus;
+        return materiaPlus; */
     }
 
     @Override

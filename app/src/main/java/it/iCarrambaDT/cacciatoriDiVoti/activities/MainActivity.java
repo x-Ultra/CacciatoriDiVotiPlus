@@ -32,14 +32,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     MyButton gradesButton;
     MyButton standingsButton;
     GifImageView gifView;
-    ProgressBar prog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         //startActivity(new Intent(this, WaitingServerActivity.class));
 
-        startActivity(new Intent(this, BookletActivity.class));
+        //startActivity(new Intent(this, BookletActivity.class));
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
@@ -106,6 +105,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onTaskFinished(MateriaPlus materiaPlus) {
 
+        gifView = findViewById(R.id.gifImageViewMain);
+        gifView.setVisibility(View.GONE);
 
         if (materiaPlus == null) {
 
@@ -117,14 +118,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             standingsButton = findViewById(R.id.classificaButton);
             standingsButton.setOnClickListener(this);
 
+
             return;
         }
 
-        ConstraintLayout constraintLayout = findViewById(R.id.parent);
-        ConstraintSet constraintSet = new ConstraintSet();
-        constraintSet.clone(constraintLayout);
-        constraintSet.connect(R.id.tempoTextView,ConstraintSet.TOP,R.id.rarityImageMain,ConstraintSet.BOTTOM,8);
-        constraintSet.applyTo(constraintLayout);
 
         //Controllo se il voto è già stato catturato
         SharedManager sm = new SharedManager(getSharedPreferences("lastLogs", MODE_PRIVATE));
@@ -170,12 +167,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         standingsButton = findViewById(R.id.classificaButton);
         standingsButton.setOnClickListener(this);
-
-        //Nascondo la progress bar
-        prog = findViewById(R.id.votoProgressBarMain);
-        prog.setVisibility(View.INVISIBLE);
-
-
 
     }
 
