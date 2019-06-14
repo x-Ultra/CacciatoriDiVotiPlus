@@ -29,4 +29,5 @@
     <string name="nomeStudente">Nome Studente</string>
     <string name="creditiOttenuti">Crediti Ottenuti</string>
     <string name="materieOttenute">Esami Passati</string>
+    <string name="insert_name">Inserisci il tuo nome</string>
 </resources>
