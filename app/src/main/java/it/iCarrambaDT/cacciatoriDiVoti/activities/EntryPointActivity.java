@@ -30,7 +30,7 @@ import it.iCarrambaDT.cacciatoriDiVoti.fileManager.SharedManager;
 import static java.security.AccessController.getContext;
 
 
-public class EntryPoint extends AppCompatActivity  implements View.OnClickListener{
+public class EntryPointActivity extends AppCompatActivity  implements View.OnClickListener{
 
     private TextView tVSpinner;
     private MyTextView welcome;

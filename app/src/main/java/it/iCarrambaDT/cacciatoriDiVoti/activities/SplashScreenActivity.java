@@ -12,13 +12,9 @@ import java.io.InputStream;
 
 import it.iCarrambaDT.cacciatoriDiVoti.R;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.MyTextView;
-import it.iCarrambaDT.cacciatoriDiVoti.databaseStuff.DBManager;
 import it.iCarrambaDT.cacciatoriDiVoti.databaseStuff.DBTask;
-import it.iCarrambaDT.cacciatoriDiVoti.entity.MateriaPlus;
 import it.iCarrambaDT.cacciatoriDiVoti.fileManager.FileTask;
 import it.iCarrambaDT.cacciatoriDiVoti.fileManager.SharedManager;
-import it.iCarrambaDT.cacciatoriDiVoti.helpers.VotoAsyncTask;
-import it.iCarrambaDT.cacciatoriDiVoti.serverInteraction.ServerCaller;
 
 import static java.lang.Thread.sleep;
 
@@ -74,11 +70,11 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         String username= manager.getUserDataInfo("username");
 
-        // commentare la roba sotto e levare qui il commento per fissare la EntryPoint
-        // startActivity( new Intent(this, EntryPoint.class));
+        // commentare la roba sotto e levare qui il commento per fissare la EntryPointActivity
+        // startActivity( new Intent(this, EntryPointActivity.class));
 
          if (username == "notfound"){
-         startActivity( new Intent(this, EntryPoint.class));
+         startActivity( new Intent(this, EntryPointActivity.class));
 
          }
 
