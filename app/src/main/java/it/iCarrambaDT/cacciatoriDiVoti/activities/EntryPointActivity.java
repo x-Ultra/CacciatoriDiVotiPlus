@@ -68,12 +68,7 @@ public class EntryPointActivity extends AppCompatActivity  implements View.OnCli
         spinner = (MySpinner) findViewById(R.id.lauree);
 
         // Riuscire a mettere questo dentro a un Xml per tradurre
-        plants = new String[]{
-                "Choose your Degree...",
-                "Ingegneria informatica",
-                "Economia",
-                "Medicina",
-        };
+        plants = getResources().getStringArray(R.array.Degree);
 
         plantsList = new ArrayList<>(Arrays.asList(plants));
 
