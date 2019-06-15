@@ -69,8 +69,8 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         //dbm.createDBorCheck();
         //Intent i = new Intent(this, WaitingServerActivity.class);
-        //Intent i = new Intent(this, MainActivity.class);
-        Intent i = new Intent(this, EntryPoint.class);
+        Intent i = new Intent(this, MainActivity.class);
+        //Intent i = new Intent(this, EntryPoint.class);
 
         //Intent i = new Intent(this, BookletActivity.class);
         //Intent i = new Intent(this, ClassificaActivity.class);
