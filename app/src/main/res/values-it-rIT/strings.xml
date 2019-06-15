@@ -33,4 +33,13 @@
     <string name="hello">Benvenuto!</string>
     <string name="entryPointButton">Sono Pronto</string>
     <string name="welcomeMessage">Riuscirai a laurearti? Inerisci i tuoi dati e scoprilo</string>
+    <string-array name="Degree" >
+
+        <item>Scegli la laurea...</item>
+        <item>Ingegneria informatica</item>
+        <item>Economia</item>
+        <item>Medicina</item>
+
+
+    </string-array>
 </resources>
