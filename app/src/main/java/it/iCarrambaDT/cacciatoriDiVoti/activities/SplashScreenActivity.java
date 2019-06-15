@@ -16,7 +16,6 @@ import it.iCarrambaDT.cacciatoriDiVoti.databaseStuff.DBManager;
 import it.iCarrambaDT.cacciatoriDiVoti.databaseStuff.DBTask;
 import it.iCarrambaDT.cacciatoriDiVoti.entity.MateriaPlus;
 import it.iCarrambaDT.cacciatoriDiVoti.fileManager.FileTask;
-import it.iCarrambaDT.cacciatoriDiVoti.fileManager.SharedManager;
 import it.iCarrambaDT.cacciatoriDiVoti.helpers.VotoAsyncTask;
 import it.iCarrambaDT.cacciatoriDiVoti.serverInteraction.ServerCaller;
 
@@ -68,28 +67,15 @@ public class SplashScreenActivity extends AppCompatActivity {
         ((MyTextView)findViewById(R.id.tvDbProg)).setText("DB check done");
         ((MyTextView)findViewById(R.id.tvFileProg)).setText("FILE check done");
 
+        //dbm.createDBorCheck();
+        //Intent i = new Intent(this, WaitingServerActivity.class);
+        //Intent i = new Intent(this, MainActivity.class);
+        Intent i = new Intent(this, EntryPoint.class);
 
-        SharedPreferences shared = getSharedPreferences("userData", MODE_PRIVATE);
-        SharedManager manager = new SharedManager(shared);
+        //Intent i = new Intent(this, BookletActivity.class);
+        //Intent i = new Intent(this, ClassificaActivity.class);
 
-        String username= manager.getUserDataInfo("username");
-
-        startActivity( new Intent(this, EntryPoint.class));
-
-        /** if (username == "notfound"){
-             startActivity( new Intent(this, EntryPoint.class));
-
-         }
-
-         else{
-         //dbm.createDBorCheck();
-         //Intent i = new Intent(this, WaitingServerActivity.class);
-         Intent i = new Intent(this, MainActivity.class);
-
-         //Intent i = new Intent(this, BookletActivity.class);
-         //Intent i = new Intent(this, ClassificaActivity.class);
-
-         startActivity(i);}*/
+        startActivity(i);
         finish();
     }
 

@@ -15,6 +15,7 @@ import java.text.ParseException;
 import it.iCarrambaDT.cacciatoriDiVoti.R;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.GifImageView;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.MyButton;
+import it.iCarrambaDT.cacciatoriDiVoti.customViews.MyImageButton;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.MyTextView;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.RarityImageView;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.TimerListener;
@@ -85,6 +86,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if (v.getId() == R.id.classificaButton) {
 
             startActivity(new Intent(this, ClassificaActivity.class));
+
+        } else if (v.getId() == R.id.reconnectButton) {
+
+            this.onResume();
         }
 
     }
@@ -124,6 +129,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             timerTextView = findViewById(R.id.timerTextViewMain);
             timerTextView.setVisibility(View.INVISIBLE);
 
+            MyImageButton recButt = findViewById(R.id.reconnectButton);
+            recButt.setOnClickListener(this);
+
             return;
         }
 
@@ -131,9 +139,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //Controllo se il voto è già stato catturato
         SharedManager sm = new SharedManager(getSharedPreferences("lastLogs", MODE_PRIVATE));
 
-
         String[] materiaString = sm.getLastVoto();
-
 
         if (materiaString[0].equals(materiaPlus.getSubject()) && materiaString[1].equals(materiaPlus.getEmissionTime()))
             disableVoto();
@@ -156,6 +162,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
 
         }
+
         //Toast.makeText(this, voto.getCapture(), Toast.LENGTH_LONG);
 
         //Cambio la rarità con il voto che mi è stato passato
@@ -171,6 +178,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         standingsButton = findViewById(R.id.classificaButton);
         standingsButton.setOnClickListener(this);
+
+        //Nascondo il bottone di riconnessione
+        MyImageButton recButt = findViewById(R.id.reconnectButton);
+        recButt.setVisibility(View.INVISIBLE);
+
 
     }
 
