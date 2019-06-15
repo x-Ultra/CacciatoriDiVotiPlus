@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.EntryPoint">
 
+
     <it.iCarrambaDT.cacciatoriDiVoti.customViews.MyTextView
         android:id="@+id/welcomeTitle"
-        android:layout_width="117dp"
-        android:layout_height="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
-        android:text="Benvenuto!"
+        android:text="@string/hello"
+        android:textColor="@android:color/black"
+        android:textSize="28sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,49 +24,74 @@
     <it.iCarrambaDT.cacciatoriDiVoti.customViews.MyTextView
         android:id="@+id/welcomeText"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="8dp"
-        android:text="it.iCarrambaDT.cacciatoriDiVoti.customViews.MyTextView"
+        android:text="@string/welcomeMessage"
+        android:textColor="@android:color/black"
+        android:textSize="21sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.481"
+        app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/welcomeTitle" />
 
     <it.iCarrambaDT.cacciatoriDiVoti.customViews.MyEditText
         android:id="@+id/username"
-        android:layout_width="wrap_content"
+        android:layout_width="289dp"
         android:layout_height="66dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="8dp"
+        android:inputType="textPersonName"
         android:hint="@string/insert_name"
+        android:textAlignment="viewStart"
+        android:textColorLink="@android:color/holo_blue_dark"
+        android:cursorVisible="true"
+        android:textCursorDrawable="@android:color/black"
+        android:textSize="20sp"
+        android:translationZ="2dp"
+        android:backgroundTint="@android:color/holo_green_dark"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/welcomeText"
         app:layout_constraintTop_toBottomOf="@+id/welcomeText" />
 
     <it.iCarrambaDT.cacciatoriDiVoti.customViews.MySpinner
         android:id="@+id/lauree"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="30dp"
         android:spinnerMode="dropdown"
+        android:translationZ="2dp"
+
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.009"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/username" />
 
     <it.iCarrambaDT.cacciatoriDiVoti.customViews.MyButton
         android:id="@+id/signedComplete"
-        android:layout_width="wrap_content"
+        android:layout_width="275dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="it.iCarrambaDT.cacciatoriDiVoti.customViews.MyButton"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="44dp"
+        android:background="#147A14"
+        android:text="@string/entryPointButton"
+        android:textColor="@android:color/white"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lauree" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="280dp"
+        android:layout_height="306dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/large_thumb_logo2" />
 
 </android.support.constraint.ConstraintLayout>

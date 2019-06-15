@@ -29,6 +29,7 @@
     <string name="creditiOttenuti">Credits Earned:</string>
     <string name="materieOttenute">Passed Exams:</string>
     <string name="insert_name">Insert your name</string>
-
-
+    <string name="hello">Welcome!</string>
+    <string name="entryPointButton">I\'m Ready</string>
+    <string name="welcomeMessage">Will you be able to graduate? \nEnter your data and discover it with your friends</string>
 </resources>

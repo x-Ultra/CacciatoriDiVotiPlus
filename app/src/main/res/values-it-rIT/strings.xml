@@ -30,4 +30,7 @@
     <string name="creditiOttenuti">Crediti Ottenuti</string>
     <string name="materieOttenute">Esami Passati</string>
     <string name="insert_name">Inserisci il tuo nome</string>
+    <string name="hello">Benvenuto!</string>
+    <string name="entryPointButton">Sono Pronto</string>
+    <string name="welcomeMessage">Riuscirai a laurearti? Inerisci i tuoi dati e scoprilo con i tuoi amici</string>
 </resources>

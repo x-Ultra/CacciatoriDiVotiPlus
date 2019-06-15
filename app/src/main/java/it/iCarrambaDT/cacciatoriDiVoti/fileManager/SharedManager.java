@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 public class SharedManager {
 
     private SharedPreferences shared;
-    private String userDataKey = "useraname";
+    private String userDataKey = "username";
     private String laureaKey = "laurea";
     private String lastVotoKey = "lastVoto";
     private String LATLON_SEPARATOR = "-";
