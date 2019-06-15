@@ -69,7 +69,7 @@ public class EntryPoint extends AppCompatActivity  implements View.OnClickListen
 
         // Riuscire a mettere questo dentro a un Xml per tradurre
         plants = new String[]{
-                "Select laurea",
+                "Choose your Degree...",
                 "Ingegneria informatica",
                 "Economia",
                 "Medicina",
