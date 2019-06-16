@@ -16,16 +16,14 @@
         custom:layout_constraintTop_toTopOf="parent"
         custom:pageNumber="5"
         custom:verticalSpace="30"
-        custom:horizontalSpace="10"/>
+        custom:horizontalSpace="10"
+        custom:curveHeight="20"
+        custom:curveWidth="50"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvClassifica"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
         custom:layout_constraintBottom_toBottomOf="parent"
         custom:layout_constraintEnd_toEndOf="parent"
         custom:layout_constraintStart_toStartOf="parent"

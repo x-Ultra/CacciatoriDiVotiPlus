@@ -2,6 +2,7 @@ package it.iCarrambaDT.cacciatoriDiVoti.activities;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -149,7 +150,11 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
 
         sm.setLastVoto(materiaPlus.getSubject() + "-" + materiaPlus.getEmissionTime());
 
-        startActivity(i);
+        String transitionName = "rarity";
+
+        ActivityOptions transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation(MapActivity.this, rarityView, transitionName);
+        startActivity(i, transitionActivityOptions.toBundle());
+
         finish();
     }
 

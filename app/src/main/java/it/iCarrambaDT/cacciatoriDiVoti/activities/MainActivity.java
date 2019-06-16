@@ -1,10 +1,14 @@
 package it.iCarrambaDT.cacciatoriDiVoti.activities;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.support.constraint.ConstraintLayout;
 import android.support.constraint.ConstraintSet;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.transition.Slide;
+import android.transition.Transition;
+import android.transition.TransitionInflater;
 import android.view.View;
 import android.view.Window;
 import android.widget.ProgressBar;
@@ -47,6 +51,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         //Usato per testare classifica
         //startActivity(new Intent(this, ClassificaActivity.class));
 
@@ -77,7 +82,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if (v.getId() == R.id.mapButton) {
 
-            startActivity(new Intent(this,MapActivity.class));
+            String transitionName = "rarity";
+
+            ActivityOptions transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, rarityView, transitionName);
+            startActivity(new Intent(this, MapActivity.class), transitionActivityOptions.toBundle());
 
         } else if (v.getId() == R.id.gradesButton) {
 
