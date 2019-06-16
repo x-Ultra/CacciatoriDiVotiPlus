@@ -4,5 +4,9 @@
         <attr name="pageNumber" format="integer" />
         <attr name="verticalSpace" format="integer" />
         <attr name="horizontalSpace" format="integer" />
+        <attr name="curveHeight" format="integer" />
+        <attr name="curveWidth" format="integer" />
+        <attr name="backColor" format="string"/>
+        <attr name="foreColor" format="string"/>
     </declare-styleable>
 </resources>

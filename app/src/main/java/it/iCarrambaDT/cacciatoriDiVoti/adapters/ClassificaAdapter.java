@@ -1,5 +1,6 @@
 package it.iCarrambaDT.cacciatoriDiVoti.adapters;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,7 +47,14 @@ public class ClassificaAdapter extends RecyclerView.Adapter<ClassificaAdapter.My
 
     @Override
     public void onBindViewHolder(ClassificaAdapter.MyViewHolder myViewHolder, int i) {
-
+/*
+Colore?
+        Context currContx = myViewHolder.itemView.getContext();
+      if (i%2 == 0)
+            myViewHolder.itemView.setBackgroundColor(currContx.getResources().getColor(R.color.classificaLight,currContx.getTheme() ));
+        else
+            myViewHolder.itemView.setBackgroundColor(currContx.getResources().getColor(R.color.classificaDark,currContx.getTheme() ));
+*/
         myViewHolder.materia.setText(voti.get(i).getSubject());
         myViewHolder.voto.setText(Integer.toString(voti.get(i).getMark()));
         myViewHolder.cfu.setText(Integer.toString(i+1) + ".");

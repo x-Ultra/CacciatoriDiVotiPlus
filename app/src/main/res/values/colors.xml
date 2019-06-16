@@ -8,4 +8,6 @@
     <color name="plateShadowColor">#3C3A3A</color>
     <color name="votoBackground">#27AF09</color>
     <color name="gifColor">#FCFBFF</color>
+    <color name="classificaLight">#4fff51</color>
+    <color name="classificaDark">#34C736</color>
 </resources>

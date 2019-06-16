@@ -11,6 +11,7 @@ import android.support.v4.graphics.drawable.DrawableCompat;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.Vector;
 
@@ -21,9 +22,14 @@ public class PageView extends View {
     int PAGE_NBR = 6;
     int vertSpace = 30;
     int horiSpace = 10;
+    int vertCurve = 20;
+    int horiCurve = 10;
+    String backColor = "#787878";
+    String foreColor = "#ffffff";
     Paint forePaint;
     Paint backPaint;
     Paint linePaint;
+
     private int wid;
     private int hei;
     int currPage = 0;
@@ -55,7 +61,28 @@ public class PageView extends View {
         if (hori != null) {
             horiSpace = Integer.parseInt(hori);
         }
-        arr.recycle();  // Do this when done.
+
+        String cVert = arr.getString(R.styleable.PageView_curveHeight);
+        if (vert != null) {
+            vertCurve = Integer.parseInt(cVert);
+        }
+
+        String cHori = arr.getString(R.styleable.PageView_curveWidth);
+        if (hori != null) {
+            horiCurve = Integer.parseInt(cHori);
+        }
+
+        String temp = arr.getString(R.styleable.PageView_backColor);
+        if (temp != null) {
+            backColor = temp;
+        }
+
+        temp = arr.getString(R.styleable.PageView_foreColor);
+        if (temp != null) {
+            foreColor = temp;
+        }
+
+        arr.recycle();
         init();
     }
 
@@ -79,7 +106,27 @@ public class PageView extends View {
         if (hori != null) {
             horiSpace = Integer.parseInt(hori);
         }
-        arr.recycle();  // Do this when done.
+        String cVert = arr.getString(R.styleable.PageView_curveHeight);
+        if (vert != null) {
+            vertCurve = Integer.parseInt(cVert);
+        }
+
+        String cHori = arr.getString(R.styleable.PageView_curveWidth);
+        if (hori != null) {
+            horiCurve = Integer.parseInt(cHori);
+        }
+
+        String temp = arr.getString(R.styleable.PageView_backColor);
+
+        if (temp != null) {
+            backColor = temp;
+        }
+
+        temp = arr.getString(R.styleable.PageView_foreColor);
+        if (temp != null) {
+            foreColor = temp;
+        }
+        arr.recycle();
         init();
     }
 
@@ -90,19 +137,19 @@ public class PageView extends View {
         backPaint = new Paint();
         linePaint = new Paint();
 
-
+        System.out.println(foreColor);
         forePaint.setStyle(Paint.Style.FILL);
-        forePaint.setColor(Color.WHITE);
+        forePaint.setColor(Color.parseColor(foreColor));
         forePaint.setAntiAlias(true);
 
 
         backPaint.setStyle(Paint.Style.FILL);
-        backPaint.setColor(Color.GRAY);
+        backPaint.setColor(Color.parseColor(backColor));
         backPaint.setAntiAlias(true);
 
-        linePaint.setColor(Color.WHITE);
+        linePaint.setColor(Color.BLACK);
         //linePaint.setColor(Color.RED);
-        linePaint.setStyle(Paint.Style.STROKE);
+        linePaint.setStyle(Paint.Style.FILL);
         linePaint.setStrokeWidth(1);
         linePaint.setAntiAlias(true);
 
@@ -122,35 +169,30 @@ public class PageView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
+        canvas.drawRect(0,0,wid,hei,linePaint);
         //Ricavo la grandezza del rettangolo
         float rectSize = (float) wid / PAGE_NBR;
 
-        //Disegno il rettangolo bianco
-        canvas.drawRect(currPage * rectSize, 0, (currPage + 1) * rectSize, hei, forePaint);
-
-        //Disegno l'immagine nel rettangolo se mi è stata passata
-        if (images != null) {
-            Drawable d = getResources().getDrawable(images.get(currPage), null);
-            d.setBounds(Math.round(currPage * rectSize + horiSpace), vertSpace, Math.round((currPage + 1) * rectSize - horiSpace), hei - vertSpace);
-            d.draw(canvas);
-        }
-
+        //Toast.makeText(getContext(), String.valueOf(currPage), Toast.LENGTH_SHORT).show();
         //Disegno tutti i rettangolo più scuri
         for (int i = 0; i < PAGE_NBR; i++) {
 
             if (i != currPage) {
 
-                canvas.drawRect(i * rectSize, 0, (i + 1) * rectSize, hei, backPaint);
+                canvas.drawArc(i*rectSize,0,i*rectSize+horiCurve,vertCurve*2,-180,90,true,backPaint);
+                canvas.drawArc((i+1)*rectSize-horiCurve,0,(i+1)*rectSize,vertCurve*2,0,-90,true,backPaint);
+                canvas.drawRect(i*rectSize+(float)horiCurve/2-1, 0, 1+(i + 1) * rectSize-(float)horiCurve/2, hei, backPaint);
+                canvas.drawRect(i * rectSize, vertCurve, (i + 1) * rectSize, hei, backPaint);
 
                 //Disegno le immagini se mi sono state passate, le scurisco
                 if (images != null) {
-                    Drawable d = getResources().getDrawable(images.get(i), null);
+                    Drawable d = getResources().getDrawable(images.get(i), getContext().getTheme());
                     Drawable wrappedDrawable = DrawableCompat.wrap(d);
                     DrawableCompat.setTintMode(wrappedDrawable, PorterDuff.Mode.DARKEN);
-                    DrawableCompat.setTint(wrappedDrawable, Color.GRAY);
+                    DrawableCompat.setTint(wrappedDrawable, Color.parseColor(backColor));
                     d.setBounds(Math.round(i * rectSize + horiSpace), vertSpace, Math.round((i + 1) * rectSize - horiSpace), hei - vertSpace);
                     d.draw(canvas);
-                    DrawableCompat.setTint(wrappedDrawable, Color.WHITE);
+                    //DrawableCompat.setTint(wrappedDrawable, Color.parseColor("#4fff51"));
                 }
 
                 //Disegno delle linee per separare i rettangoli
@@ -160,6 +202,20 @@ public class PageView extends View {
                     canvas.drawLine((i + 1) * rectSize, 0, (i + 1) * rectSize, hei, linePaint);
             }
         }
+
+        //Disegno il rettangolo bianco
+        canvas.drawArc(currPage*rectSize,0,currPage*rectSize+horiCurve,vertCurve*2,-180,90,true,forePaint);
+        canvas.drawArc((currPage+1)*rectSize-horiCurve,0,(currPage+1)*rectSize,vertCurve*2,0,-90,true,forePaint);
+        canvas.drawRect(currPage*rectSize+(float)horiCurve/2, 0, (currPage + 1) * rectSize-(float)horiCurve/2, hei, forePaint);
+        canvas.drawRect(currPage * rectSize, vertCurve, (currPage + 1) * rectSize, hei, forePaint);
+
+        //Disegno l'immagine nel rettangolo se mi è stata passata
+        if (images != null) {
+            Drawable d = getResources().getDrawable(images.get(currPage), getContext().getTheme());
+            d.setBounds(Math.round(currPage * rectSize + horiSpace), vertSpace, Math.round((currPage + 1) * rectSize - horiSpace), hei - vertSpace);
+            d.draw(canvas);
+        }
+
 
 
     }
@@ -217,5 +273,21 @@ public class PageView extends View {
 
     public void setHoriSpace(int horiSpace) {
         this.horiSpace = horiSpace;
+    }
+
+    public int getVertCurve() {
+        return vertCurve;
+    }
+
+    public void setVertCurve(int vertCurve) {
+        this.vertCurve = vertCurve;
+    }
+
+    public int getHoriCurve() {
+        return horiCurve;
+    }
+
+    public void setHoriCurve(int horiCurve) {
+        this.horiCurve = horiCurve;
     }
 }
