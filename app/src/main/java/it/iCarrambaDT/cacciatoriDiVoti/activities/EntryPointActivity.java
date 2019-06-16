@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.ColorInt;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,8 +30,9 @@ import it.iCarrambaDT.cacciatoriDiVoti.fileManager.SharedManager;
 import static java.security.AccessController.getContext;
 
 
-public class EntryPoint extends AppCompatActivity  implements View.OnClickListener{
+public class EntryPointActivity extends AppCompatActivity  implements View.OnClickListener{
 
+    private TextView tVSpinner;
     private MyTextView welcome;
     private MyTextView textWelcome;
     private MyEditText nomeStudente;
@@ -37,6 +40,7 @@ public class EntryPoint extends AppCompatActivity  implements View.OnClickListen
     private MySpinner spinner;
     private List<String> plantsList;
     private ArrayAdapter<String> spinnerArrayAdapter;
+    private ImageView logoUni;
     private String[] plants;
     private String laurea;
     private String userName;
@@ -51,24 +55,20 @@ public class EntryPoint extends AppCompatActivity  implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_entry_point);
 
+        //opacizzo l'immagine
+        logoUni = (ImageView) findViewById(R.id.imageView2);
+        logoUni.setImageAlpha(127);
 
-
+        //dichiaro le varie View
         welcome = (MyTextView) findViewById(R.id.welcomeTitle);
         textWelcome = (MyTextView) findViewById(R.id.welcomeText);
         nomeStudente = (MyEditText) findViewById(R.id.username);
-
         completeButton = (MyButton) findViewById(R.id.signedComplete);
         completeButton.setOnClickListener(this);
-
-
         spinner = (MySpinner) findViewById(R.id.lauree);
+
         // Riuscire a mettere questo dentro a un Xml per tradurre
-        plants = new String[]{
-                "Select laurea",
-                "Ingegneria informatica",
-                "Economia",
-                "Medicina",
-        };
+        plants = getResources().getStringArray(R.array.Degree);
 
         plantsList = new ArrayList<>(Arrays.asList(plants));
 
@@ -77,13 +77,14 @@ public class EntryPoint extends AppCompatActivity  implements View.OnClickListen
                 this,R.layout.spinner_item,plantsList){
             @Override
             public boolean isEnabled(int position){
-                if(position == 0)
+                if(position == 0 )
                 {
                     // Il primo Item lo disabilito per farlo hint
                     return false;
                 }
                 else
                 {
+
                     return true;
                 }
             }
@@ -92,7 +93,7 @@ public class EntryPoint extends AppCompatActivity  implements View.OnClickListen
                                         ViewGroup parent) {
                 View view = super.getDropDownView(position, convertView, parent);
                 TextView tv = (TextView) view;
-                if(position == 0){
+                if(position == 0 ){
                     tv.setTextColor(Color.GRAY);
                 }
                 else {
@@ -112,10 +113,13 @@ public class EntryPoint extends AppCompatActivity  implements View.OnClickListen
                 // First item is disable and it is used for hint
                 if(position > 0){
                     // Notify the selected item text
+                    tVSpinner = findViewById(R.id.tVSpinner);
+
                     laurea = selectedItemText;
                     Toast.makeText
                             (getApplicationContext(), "Selected : " + selectedItemText, Toast.LENGTH_SHORT)
                             .show();
+                    tVSpinner.setTextColor(Color.BLACK);
 
                 }
             }
@@ -150,6 +154,8 @@ public class EntryPoint extends AppCompatActivity  implements View.OnClickListen
             startActivity(new Intent(this, MainActivity.class));
 
         }
+
+
 
     }
 }

@@ -29,6 +29,17 @@
     <string name="creditiOttenuti">Credits Earned:</string>
     <string name="materieOttenute">Passed Exams:</string>
     <string name="insert_name">Insert your name</string>
+    <string name="hello">Welcome!</string>
+    <string name="entryPointButton">I\'m Ready</string>
+    <string name="welcomeMessage">Will you be able to graduate? \nEnter your data and find out</string>
+    <string name="contentImage" translatable="false">logoUni</string>
+    <string-array name="Degree">
+
+        <item>Choose your Degree...</item>
+        <item>Ingegneria informatica</item>
+        <item>Economia</item>
+        <item>Medicina</item>
 
 
+    </string-array>
 </resources>
