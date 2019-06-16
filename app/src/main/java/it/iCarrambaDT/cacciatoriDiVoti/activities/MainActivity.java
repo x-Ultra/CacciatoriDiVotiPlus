@@ -1,13 +1,10 @@
 package it.iCarrambaDT.cacciatoriDiVoti.activities;
 
 import android.content.Intent;
-import android.support.constraint.ConstraintLayout;
-import android.support.constraint.ConstraintSet;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import java.text.ParseException;
@@ -15,7 +12,7 @@ import java.text.ParseException;
 import it.iCarrambaDT.cacciatoriDiVoti.R;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.GifImageView;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.MyButton;
-import it.iCarrambaDT.cacciatoriDiVoti.customViews.MyImageButton;
+import it.iCarrambaDT.cacciatoriDiVoti.customViews.MyImageView;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.MyTextView;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.RarityImageView;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.TimerListener;
@@ -129,7 +126,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             timerTextView = findViewById(R.id.timerTextViewMain);
             timerTextView.setVisibility(View.INVISIBLE);
 
-            MyImageButton recButt = findViewById(R.id.reconnectButton);
+            MyImageView recButt = findViewById(R.id.reconnectButton);
             recButt.setOnClickListener(this);
 
             return;
@@ -180,7 +177,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         standingsButton.setOnClickListener(this);
 
         //Nascondo il bottone di riconnessione
-        MyImageButton recButt = findViewById(R.id.reconnectButton);
+        MyImageView recButt = findViewById(R.id.reconnectButton);
         recButt.setVisibility(View.INVISIBLE);
 
 

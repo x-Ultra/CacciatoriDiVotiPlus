@@ -151,6 +151,7 @@ public class EntryPointActivity extends AppCompatActivity  implements View.OnCli
 
             managerLaurea.setLaurea(laurea);
 
+
             startActivity(new Intent(this, MainActivity.class));
 
         }

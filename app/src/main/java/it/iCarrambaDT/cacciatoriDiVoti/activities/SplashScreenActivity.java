@@ -1,22 +1,36 @@
 package it.iCarrambaDT.cacciatoriDiVoti.activities;
 
+import android.app.AlarmManager;
+import android.app.Notification;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
+import android.graphics.drawable.BitmapDrawable;
+import android.media.RingtoneManager;
+import android.os.SystemClock;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
+
+import android.content.Context;
 
 import it.iCarrambaDT.cacciatoriDiVoti.R;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.MyTextView;
 import it.iCarrambaDT.cacciatoriDiVoti.databaseStuff.DBTask;
 import it.iCarrambaDT.cacciatoriDiVoti.fileManager.FileTask;
 import it.iCarrambaDT.cacciatoriDiVoti.fileManager.SharedManager;
+import it.iCarrambaDT.cacciatoriDiVoti.notification.NotifListner;
 
+import static it.iCarrambaDT.cacciatoriDiVoti.notification.App.CHANNEL_ID;
 import static java.lang.Thread.sleep;
+import android.app.Service;
 
 public class SplashScreenActivity extends AppCompatActivity {
 
@@ -72,6 +86,10 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         // commentare la roba sotto e levare qui il commento per fissare la EntryPointActivity
         // startActivity( new Intent(this, EntryPointActivity.class));
+        long delay=1000;
+        long repeat = 1000;
+        int notificationId = 1234;
+        scheduleNotification(getBaseContext().getApplicationContext(),delay, repeat,  notificationId);
 
          if (username == "notfound"){
          startActivity( new Intent(this, EntryPointActivity.class));
@@ -88,6 +106,19 @@ public class SplashScreenActivity extends AppCompatActivity {
 
          startActivity(i);}
         finish();
+    }
+
+    public void scheduleNotification(Context context, long delay,long repeat, int notificationId) {//delay is after how much time(in millis) from current time you want to schedule the notification
+
+        Intent notificationIntent = new Intent(context, NotifListner.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, notificationId, notificationIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+
+
+
+        long futureInMillis = SystemClock.elapsedRealtime() + delay;
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        alarmManager.cancel(pendingIntent);
+        alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis,repeat, pendingIntent);
     }
 
 }
