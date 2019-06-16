@@ -86,39 +86,26 @@ public class SplashScreenActivity extends AppCompatActivity {
 
         // commentare la roba sotto e levare qui il commento per fissare la EntryPointActivity
         // startActivity( new Intent(this, EntryPointActivity.class));
-        long delay=1000;
-        long repeat = 1000;
-        int notificationId = 1234;
-        scheduleNotification(getBaseContext().getApplicationContext(),delay, repeat,  notificationId);
 
          if (username == "notfound"){
-         startActivity( new Intent(this, EntryPointActivity.class));
+            startActivity( new Intent(this, EntryPointActivity.class));
 
          }
 
          else{
-         //dbm.createDBorCheck();
+
+
+             //dbm.createDBorCheck();
          //Intent i = new Intent(this, WaitingServerActivity.class);
-         Intent i = new Intent(this, MainActivity.class);
+            Intent i = new Intent(this, MainActivity.class);
 
          //Intent i = new Intent(this, BookletActivity.class);
          //Intent i = new Intent(this, ClassificaActivity.class);
 
-         startActivity(i);}
-        finish();
+            startActivity(i);}
+            finish();
     }
 
-    public void scheduleNotification(Context context, long delay,long repeat, int notificationId) {//delay is after how much time(in millis) from current time you want to schedule the notification
 
-        Intent notificationIntent = new Intent(context, NotifListner.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, notificationId, notificationIntent, PendingIntent.FLAG_CANCEL_CURRENT);
-
-
-
-        long futureInMillis = SystemClock.elapsedRealtime() + delay;
-        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        alarmManager.cancel(pendingIntent);
-        alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis,repeat, pendingIntent);
-    }
 
 }

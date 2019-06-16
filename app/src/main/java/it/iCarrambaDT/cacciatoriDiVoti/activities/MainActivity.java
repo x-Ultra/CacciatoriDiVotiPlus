@@ -1,7 +1,11 @@
 package it.iCarrambaDT.cacciatoriDiVoti.activities;
 
 import android.app.ActivityOptions;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.transition.Slide;
@@ -25,6 +29,7 @@ import it.iCarrambaDT.cacciatoriDiVoti.entity.MateriaPlus;
 import it.iCarrambaDT.cacciatoriDiVoti.fileManager.SharedManager;
 import it.iCarrambaDT.cacciatoriDiVoti.helpers.VotoAsyncTask;
 import it.iCarrambaDT.cacciatoriDiVoti.helpers.VotoListener;
+import it.iCarrambaDT.cacciatoriDiVoti.notification.NotifListner;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, TimerListener, VotoListener {
 
@@ -37,6 +42,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        long delay=1000;
+        long repeat = 1000;
+        int notificationId = 1234;
+
+        scheduleNotification(getBaseContext().getApplicationContext(),delay, repeat,  notificationId);
 
         //startActivity(new Intent(this, WaitingServerActivity.class));
 
@@ -207,5 +217,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         vat.setListener(this);
 
         vat.execute(this);
+    }
+
+    public void scheduleNotification(Context context, long delay, long repeat, int notificationId) {
+
+        Intent notificationIntent = new Intent(context, NotifListner.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, notificationId, notificationIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+
+
+
+        long futureInMillis = SystemClock.elapsedRealtime() + delay;
+        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+        alarmManager.cancel(pendingIntent);
+        alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis,repeat, pendingIntent);
     }
 }

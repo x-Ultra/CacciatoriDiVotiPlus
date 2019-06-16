@@ -42,4 +42,6 @@
 
 
     </string-array>
+    <string name="notificationTitle">Nuovo voto</string>
+    <string name="notificationText">non perdertelo, corri a catturarlo</string>
 </resources>

@@ -27,6 +27,8 @@ import it.iCarrambaDT.cacciatoriDiVoti.customViews.MyEditText;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.MySpinner;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.MyTextView;
 import it.iCarrambaDT.cacciatoriDiVoti.fileManager.SharedManager;
+import it.iCarrambaDT.cacciatoriDiVoti.notification.NotifListner;
+
 import static java.security.AccessController.getContext;
 
 
@@ -145,12 +147,26 @@ public class EntryPointActivity extends AppCompatActivity  implements View.OnCli
             manager.setUserDataInfo(nomeStudente.getText().toString());
 
             //...e la laurea
+            if (laurea == plants[1]) {
+                laurea = "ing_info";
+
+            }
+            else if (laurea == plants[2]){
+                laurea = "eco";
+            }
+
+            else if (laurea == plants[3]){
+                laurea = "med";
+            }
+            Toast.makeText
+                    (getApplicationContext(), "Selected : " + laurea, Toast.LENGTH_SHORT)
+                    .show();
 
             SharedPreferences prefs = getSharedPreferences("laurea", MODE_PRIVATE);
             SharedManager managerLaurea = new SharedManager(prefs);
 
             managerLaurea.setLaurea(laurea);
-
+            NotifListner.DEGREE = laurea;
 
             startActivity(new Intent(this, MainActivity.class));
 

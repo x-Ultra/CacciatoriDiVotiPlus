@@ -4,21 +4,21 @@ import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.SystemClock;
 
+import it.iCarrambaDT.cacciatoriDiVoti.fileManager.SharedManager;
+
 public class NotifBody {
-    private Context context;
-    public void scheduleNotification(long delay, long repeat, int notificationId) {//delay is after how much time(in millis) from current time you want to schedule the notification
+   private SharedPreferences prefs;
+   private SharedManager manag;
 
 
-        Intent notificationIntent = new Intent(context, NotifListner.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, notificationId, notificationIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+   public String takeUserName(Context context){
+       prefs = context.getSharedPreferences("userData",Context.MODE_PRIVATE);
+       SharedManager manager = new SharedManager(prefs);
 
-
-
-        long futureInMillis = SystemClock.elapsedRealtime() + delay;
-        AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        alarmManager.cancel(pendingIntent);
-        alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis,repeat, pendingIntent);
-    }
+       String username= manager.getUserDataInfo("username");
+       return username;
+   }
 }
