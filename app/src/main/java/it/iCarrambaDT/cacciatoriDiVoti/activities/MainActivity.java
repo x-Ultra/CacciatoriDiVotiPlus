@@ -109,6 +109,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onTaskFinished(MateriaPlus materiaPlus) {
+
         long delay = 0;
         gifView = findViewById(R.id.gifImageViewMain);
         gifView.setVisibility(View.GONE);
@@ -130,6 +131,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             timerTextView.setVisibility(View.INVISIBLE);
 
             MyImageView recButt = findViewById(R.id.reconnectButton);
+            recButt.setVisibility(View.VISIBLE);
             recButt.setOnClickListener(this);
 
             return;
@@ -182,9 +184,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         standingsButton = findViewById(R.id.classificaButton);
         standingsButton.setOnClickListener(this);
 
-        //Nascondo il bottone di riconnessione
-        MyImageView recButt = findViewById(R.id.reconnectButton);
-        recButt.setVisibility(View.INVISIBLE);
 
 
 
@@ -200,6 +199,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         degree = sm.getLaurea();
 
         setContentView(R.layout.activity_main);
+
+
+        //Nascondo il bottone di riconnessione
+        MyImageView recButt = findViewById(R.id.reconnectButton);
+        recButt.setVisibility(View.INVISIBLE);
+
 
         gifView = findViewById(R.id.gifImageViewMain);
         gifView.setGifImageResource(R.drawable.loading);
