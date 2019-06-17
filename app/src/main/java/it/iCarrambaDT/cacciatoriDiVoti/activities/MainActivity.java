@@ -43,9 +43,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        SharedManager sm = new SharedManager(getSharedPreferences("laurea", MODE_PRIVATE));
-        degree = sm.getLaurea();
-
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
@@ -103,7 +100,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onTimerFinished() {
 
         //Chiedo (rarità) del voto al control
-        VotoAsyncTask vat = new VotoAsyncTask();
+        VotoAsyncTask vat = new VotoAsyncTask(degree);
         vat.setListener(this);
 
         vat.execute(this);
@@ -153,8 +150,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             timerTextView.setListener(this);
 
             try {
-                resetTimer(materiaPlus.getTimerInMillis());
                 delay = materiaPlus.getTimerInMillis();
+                resetTimer(delay);
                 scheduleNotification(getBaseContext().getApplicationContext(),delay, materiaPlus.getTimeToLiveMinutes()*60*1000,  NotifListner.NOTIFICATION_ID);
 
             } catch (ParseException e) {
@@ -198,6 +195,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onResume() {
 
         super.onResume();
+
+        SharedManager sm = new SharedManager(getSharedPreferences("userData", MODE_PRIVATE));
+        degree = sm.getLaurea();
 
         setContentView(R.layout.activity_main);
 

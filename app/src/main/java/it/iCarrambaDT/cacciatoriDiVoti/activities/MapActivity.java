@@ -60,6 +60,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
     private Marker currMark;
     private Circle currCirc;
     private LocationController lc;
+    private String degree;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -228,7 +229,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                 //Errore nella ricezione del pacchetto try again
 
                 disableVoto();
-                VotoAsyncTask vat = new VotoAsyncTask();
+                VotoAsyncTask vat = new VotoAsyncTask(degree);
                 vat.setListener(this);
 
                 vat.execute(this);
@@ -244,7 +245,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         lc.stopListening();
 
         //Chiedo (rarità) del materiaPlus al control
-        VotoAsyncTask vat = new VotoAsyncTask();
+        VotoAsyncTask vat = new VotoAsyncTask(degree);
         vat.setListener(this);
 
         vat.execute(this);
@@ -382,8 +383,11 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         super.onResume();
         mapView.onResume();
 
+        SharedManager sm = new SharedManager(getSharedPreferences("userData", MODE_PRIVATE));
+        degree = sm.getLaurea();
+
         //Chiedo (rarità) del materiaPlus al control
-        VotoAsyncTask vat = new VotoAsyncTask();
+        VotoAsyncTask vat = new VotoAsyncTask(degree);
         vat.setListener(this);
 
         vat.execute(this);
