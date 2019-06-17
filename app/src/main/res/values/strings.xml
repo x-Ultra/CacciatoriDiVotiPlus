@@ -33,7 +33,7 @@
     <string name="entryPointButton">I\'m Ready</string>
     <string name="welcomeMessage">Will you be able to graduate? \nEnter your data and find out</string>
     <string name="contentImage" translatable="false">logoUni</string>
-    <string name="notificationText">" Don't miss it, run to catch it"</string>
+    <string name="notificationText">"!! Don't miss it, run to catch it"</string>
     <string-array name="Degree">
 
         <item>Choose your Degree...</item>
