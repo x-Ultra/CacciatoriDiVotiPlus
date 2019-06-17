@@ -32,16 +32,19 @@ public class VotoAsyncTask extends AsyncTask<Context, Void, MateriaPlus>{
 
     @Override
     protected MateriaPlus doInBackground(Context... contexts) {
-
-
         Context context = contexts[0];
+
+
         try {
+
             materiaPlus = ServerCaller.getInstance().getVotoFromServer(laurea);
+
         }catch (IOException e){
             String errorMessage = context.getString(R.string.serverError);
             e.printStackTrace();
             //Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show();
         }
+
 
         //System.out.println("MATERIA OTTENUTA:\n\n\n"+materiaPlus.toString()+"\n\n\n");
         return materiaPlus;
