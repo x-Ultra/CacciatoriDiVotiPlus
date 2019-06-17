@@ -39,6 +39,7 @@ public class VotoAsyncTask extends AsyncTask<Context, Void, MateriaPlus>{
             materiaPlus = ServerCaller.getInstance().getVotoFromServer(laurea);
         }catch (IOException e){
             String errorMessage = context.getString(R.string.serverError);
+            e.printStackTrace();
             //Toast.makeText(context, errorMessage, Toast.LENGTH_SHORT).show();
         }
 

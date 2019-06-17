@@ -5,26 +5,18 @@ import android.content.SharedPreferences;
 public class SharedManager {
 
     private SharedPreferences shared;
-    private String userDataKey = "username";
-    private String laureaKey = "laurea";
+    public static final String userDataKey = "username";
+    public static final String laureaKey = "laurea";
     private String lastVotoKey = "lastVoto";
     private String LATLON_SEPARATOR = "-";
     private String VOTO_SEPARATOR  = "-";
-
-    public static final String nomeUtente = "nomeUtente";
 
     public SharedManager(SharedPreferences shared){
         this.shared = shared;
     }
 
     public String getLaurea(){
-        return shared.getString(laureaKey, "null");
-    }
-
-    public void setLaurea(String value){
-        SharedPreferences.Editor editor = shared.edit();
-        editor.putString(laureaKey, value);
-        editor.apply();
+        return shared.getString(laureaKey, "notfound");
     }
 
     public void setLastVoto(String value){
@@ -37,9 +29,9 @@ public class SharedManager {
         return shared.getString(value, "notfound");
     }
 
-    public void setUserDataInfo(String value){
+    public void setUserDataInfo(String value, String key){
         SharedPreferences.Editor editor = shared.edit();
-        editor.putString(userDataKey, value);
+        editor.putString(key, value);
         editor.apply();
 
     }

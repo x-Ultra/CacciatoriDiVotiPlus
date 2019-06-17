@@ -11,11 +11,11 @@
         android:id="@+id/tvEsami"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
         android:text="@string/materieOttenute"
         android:textSize="@dimen/datiBooklet"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/tvCrediti"
         tools:text="@string/materieOttenute" />
 
@@ -23,11 +23,11 @@
         android:id="@+id/tvCrediti"
         android:layout_width="wrap_content"
         android:layout_height="26dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
         android:text="@string/creditiOttenuti"
         android:textSize="@dimen/datiBooklet"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/tvStudente" />
 
     <it.iCarrambaDT.cacciatoriDiVoti.customViews.MyTextView
@@ -62,24 +62,25 @@
         android:id="@+id/tvStudente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
         android:text="@string/nomeStudente"
         android:textSize="@dimen/datiBooklet"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="parent" />
 
     <it.iCarrambaDT.cacciatoriDiVoti.customViews.MyTextView
         android:id="@+id/tvStudentsName"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="68dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
         android:text="none"
         android:textColor="@android:color/black"
         android:textSize="@dimen/datiBooklet"
         app:autoSizeMaxTextSize="20dp"
         app:autoSizeMinTextSize="10dp"
+        app:autoSizeTextType="uniform"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/tvStudente"
         app:layout_constraintTop_toTopOf="parent" />
@@ -88,9 +89,7 @@
         android:id="@+id/tvCreditsEarned"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="68dp"
+        android:layout_marginTop="12dp"
         android:text="none"
         android:textColor="@android:color/holo_green_light"
         android:textSize="@dimen/datiBooklet"
@@ -104,16 +103,24 @@
         android:id="@+id/tvPassedExams"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="68dp"
+        android:layout_marginTop="12dp"
         android:text="none"
         android:textColor="@android:color/holo_green_light"
         android:textSize="@dimen/datiBooklet"
         app:autoSizeMaxTextSize="20dp"
         app:autoSizeMinTextSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toEndOf="@+id/tvCrediti"
         app:layout_constraintTop_toBottomOf="@+id/tvCreditsEarned" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="116dp"
+        android:layout_height="105dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/torvergata2" />
+
 </android.support.constraint.ConstraintLayout>

@@ -27,10 +27,10 @@ public class BookletActivity extends AppCompatActivity {
     private MyTextView tvCrediti;
     private MyTextView tvEsami;
 
+    private Vector<Materia> votiOttenuti;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-        int crediti = 0, esami = 0;
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
@@ -52,27 +52,24 @@ public class BookletActivity extends AppCompatActivity {
         //Levare esto commmento per vedere qualche voto nel libretto
         insertFakeVoti();
 
-        Vector<Materia> votiOttenuti = dbManager.getVoti();
+        votiOttenuti = dbManager.getVoti();
+
+        int crediti = 0, esami = 0;
+
+
         esami = votiOttenuti.size();
-
         tvEsami.setText(Integer.toString(esami));
-
         for(Materia materia: votiOttenuti)
             crediti += materia.getCredits();
-
         tvCrediti.setText(Integer.toString(crediti));
-
 
         SharedPreferences shared = getSharedPreferences("userData", MODE_PRIVATE);
         SharedManager manager = new SharedManager(shared);
 
-        tvNome.setText(manager.getUserDataInfo(SharedManager.nomeUtente));
-
+        tvNome.setText(manager.getUserDataInfo(SharedManager.userDataKey));
 
         if(votiOttenuti.size() != 0)
             tvEmptyBooklet.setVisibility(View.GONE);
-
-        //System.out.print("DB SIZE: "+votiOttenuti.size());
 
         BookletAdapters adapter = new BookletAdapters(votiOttenuti);
         rv.setAdapter(adapter);
