@@ -45,16 +45,12 @@ public class NotifListner extends BroadcastReceiver implements VotoListener {
     @Override
     public void onReceive(Context context, Intent intent) {
         this.context = context;
-        Intent intentStart = new Intent(context, SplashScreenActivity.class);
-        PendingIntent activity = PendingIntent.getActivity(context, 0, intentStart, PendingIntent.FLAG_CANCEL_CURRENT);
 
+        //Prendo la laurea dalle shared
         SharedPreferences shared = context.getSharedPreferences("userData", MODE_PRIVATE);
         SharedManager manager = new SharedManager(shared);
 
-        String username= manager.getUserDataInfo("username");
-
         String degree = manager.getLaurea();
-        String test = "tutto a posto";
         //contatto il server
 
 
@@ -65,7 +61,7 @@ public class NotifListner extends BroadcastReceiver implements VotoListener {
 
 
     }
-
+    //necessaria per adattare le immagini alle dimensioni e al tipo dell'icona grande
     public Bitmap resizeFunction (Context context, int rarityId){
         Bitmap contactPic = BitmapFactory.decodeResource(context.getResources(),rarityId);
 
@@ -95,16 +91,15 @@ public class NotifListner extends BroadcastReceiver implements VotoListener {
         //contatto il server
 
         if(materia == null){
-            //materia = new MateriaPlus("Stronzologia",13,30,5);
-
-            //Esco e non isualizzo nessuna notifica
+            //Esco e non visualizzo nessuna notifica
             return ;
 
         }
 
 
         int rarityId = R.drawable.common;
-        //Scelgo l'mmagine della rarità
+
+        //Scelgo l'mmagine della largeIcon
         switch (materia.getRarity()) {
 
             case 1:
@@ -133,6 +128,7 @@ public class NotifListner extends BroadcastReceiver implements VotoListener {
                 break;
         }
 
+        //costruisco la notifica
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context,CHANNEL_ID)
                 .setLargeIcon(resizeFunction (context,rarityId))
                 .setSmallIcon(R.drawable.icarramba_logo)

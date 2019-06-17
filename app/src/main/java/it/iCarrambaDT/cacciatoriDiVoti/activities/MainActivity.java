@@ -156,8 +156,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 resetTimer(materiaPlus.getTimerInMillis());
                 delay = materiaPlus.getTimerInMillis();
                 scheduleNotification(getBaseContext().getApplicationContext(),delay, materiaPlus.getTimeToLiveMinutes()*60*1000,  NotifListner.NOTIFICATION_ID);
-                System.out.println(materiaPlus.getTimeToLiveMinutes());
-                System.out.println(materiaPlus.getTimerInMillis());
 
             } catch (ParseException e) {
                 //Errore nella ricezione del pacchetto try again
@@ -218,13 +216,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         Intent notificationIntent = new Intent(context, NotifListner.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, notificationId, notificationIntent, PendingIntent.FLAG_CANCEL_CURRENT);
-        System.out.println(repeat);
-        System.out.println(delay);
 
 
 
         long futureInMillis = SystemClock.elapsedRealtime() + delay + 5000;
-        System.out.println(futureInMillis);
+
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         alarmManager.cancel(pendingIntent);
         alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis, repeat, pendingIntent);
