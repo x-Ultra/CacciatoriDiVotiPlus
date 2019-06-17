@@ -58,7 +58,7 @@ public class NotifListner extends BroadcastReceiver implements VotoListener {
         //contatto il server
 
 
-        VotoAsyncTask vat = new VotoAsyncTask();
+        VotoAsyncTask vat = new VotoAsyncTask(degree);
         vat.setListener(this);
 
         vat.execute(context);

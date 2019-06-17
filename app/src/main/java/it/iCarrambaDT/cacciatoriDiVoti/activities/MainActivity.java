@@ -39,9 +39,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     MyButton gradesButton;
     MyButton standingsButton;
     GifImageView gifView;
+    private String degree;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        SharedManager sm = new SharedManager(getSharedPreferences("laurea", MODE_PRIVATE));
+        degree = sm.getLaurea();
 
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -159,7 +162,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             } catch (ParseException e) {
                 //Errore nella ricezione del pacchetto try again
 
-                VotoAsyncTask vat = new VotoAsyncTask();
+                VotoAsyncTask vat = new VotoAsyncTask(degree);
                 vat.setListener(this);
 
                 vat.execute(this);
@@ -205,7 +208,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         //System.out.println("ciao");
         //Chiedo (rarità) del voto al control
-        VotoAsyncTask vat = new VotoAsyncTask();
+        VotoAsyncTask vat = new VotoAsyncTask(degree);
         vat.setListener(this);
 
         vat.execute(this);
