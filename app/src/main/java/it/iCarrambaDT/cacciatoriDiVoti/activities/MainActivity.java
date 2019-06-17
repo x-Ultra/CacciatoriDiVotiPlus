@@ -13,12 +13,14 @@ import android.transition.Transition;
 import android.transition.TransitionInflater;
 import android.view.View;
 import android.view.Window;
+import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
 
 import java.text.ParseException;
 
 import it.iCarrambaDT.cacciatoriDiVoti.R;
-import it.iCarrambaDT.cacciatoriDiVoti.customViews.GifImageView;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.MyButton;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.MyImageView;
 import it.iCarrambaDT.cacciatoriDiVoti.customViews.MyTextView;
@@ -38,7 +40,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     MyButton mapButton;
     MyButton gradesButton;
     MyButton standingsButton;
-    GifImageView gifView;
+    ImageView gifView;
+
     private String degree;
 
     @Override
@@ -207,7 +210,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         gifView = findViewById(R.id.gifImageViewMain);
-        gifView.setGifImageResource(R.drawable.loading);
+        Glide.with(this).asGif().load(R.raw.loading).into(gifView);
 
         //System.out.println("ciao");
         //Chiedo (rarità) del voto al control

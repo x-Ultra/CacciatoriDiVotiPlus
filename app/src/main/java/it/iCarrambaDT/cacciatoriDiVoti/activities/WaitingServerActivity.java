@@ -2,9 +2,11 @@ package it.iCarrambaDT.cacciatoriDiVoti.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
 
 import it.iCarrambaDT.cacciatoriDiVoti.R;
-import it.iCarrambaDT.cacciatoriDiVoti.customViews.GifImageView;
 
 public class WaitingServerActivity extends AppCompatActivity {
 
@@ -13,7 +15,8 @@ public class WaitingServerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_waiting_server);
 
-        GifImageView gifImageView = findViewById(R.id.gifImageView);
-        gifImageView.setGifImageResource(R.drawable.loading);
+        ImageView gifImageView = findViewById(R.id.gifImageView);
+
+        Glide.with(this).asGif().load(R.raw.loading).into(gifImageView);
     }
 }

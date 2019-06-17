@@ -163,7 +163,7 @@ public class EntryPointActivity extends AppCompatActivity  implements View.OnCli
             manager.setUserDataInfo(laurea, SharedManager.laureaKey);
 
             startActivity(new Intent(this, MainActivity.class));
-
+            finish();
         }
 
 

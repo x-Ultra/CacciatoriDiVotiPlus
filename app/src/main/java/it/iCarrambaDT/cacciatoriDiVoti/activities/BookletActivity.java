@@ -49,13 +49,11 @@ public class BookletActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         rv.setLayoutManager(layoutManager);
 
-        //Levare esto commmento per vedere qualche voto nel libretto
         insertFakeVoti();
 
         votiOttenuti = dbManager.getVoti();
 
         int crediti = 0, esami = 0;
-
 
         esami = votiOttenuti.size();
         tvEsami.setText(Integer.toString(esami));
