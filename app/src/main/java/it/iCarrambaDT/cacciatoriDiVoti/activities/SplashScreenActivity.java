@@ -87,20 +87,18 @@ public class SplashScreenActivity extends AppCompatActivity {
         // commentare la roba sotto e levare qui il commento per fissare la EntryPointActivity
         // startActivity( new Intent(this, EntryPointActivity.class));
 
-         if (username == "notfound"){
+         if (username.equals("notfound")){
             startActivity( new Intent(this, EntryPointActivity.class));
-
-         }
-
-         else{
+         }else{
 
 
              //dbm.createDBorCheck();
-         //Intent i = new Intent(this, WaitingServerActivity.class);
-            Intent i = new Intent(this, MainActivity.class);
+             //Intent i = new Intent(this, WaitingServerActivity.class);
+             // Intent i = new Intent(this, BookletActivity.class);
+             Intent i = new Intent(this, MainActivity.class);
 
-         //Intent i = new Intent(this, BookletActivity.class);
-         //Intent i = new Intent(this, ClassificaActivity.class);
+            //Intent i = new Intent(this, BookletActivity.class);
+            //Intent i = new Intent(this, ClassificaActivity.class);
 
             startActivity(i);}
             finish();

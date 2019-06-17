@@ -135,38 +135,31 @@ public class EntryPointActivity extends AppCompatActivity  implements View.OnCli
 
     @Override
     public void onClick(View v) {
-        if (laurea != null && nomeStudente.getText().length()>0 ){
-            Toast.makeText
-                    (getApplicationContext(), "Vado da Ezio " + nomeStudente.getText() + laurea, Toast.LENGTH_SHORT)
-                    .show();
+
+        if (laurea != null && nomeStudente.getText() != null
+                && nomeStudente.getText().length() > 0 ){
+
+            //TODO cancellare prima della deploy
+            Toast.makeText(getApplicationContext(), "Vado da Ezio " + nomeStudente.getText() + laurea, Toast.LENGTH_SHORT).show();
 
             //Salvo nelle Shared il nome...
             SharedPreferences shared = getSharedPreferences("userData", MODE_PRIVATE);
             SharedManager manager = new SharedManager(shared);
 
-            manager.setUserDataInfo(nomeStudente.getText().toString());
+            manager.setUserDataInfo(nomeStudente.getText().toString(), SharedManager.userDataKey);
 
             //...e la laurea
             if (laurea.equals(plants[1])) {
                 laurea = "ing_info";
-
-            }
-            else if (laurea.equals(plants[2])){
+            }else if (laurea.equals(plants[2])){
                 laurea = "eco";
-            }
-
-            else if (laurea.equals(plants[3])){
+            }else if (laurea.equals(plants[3])){
                 laurea = "med";
             }
-            Toast.makeText
-                    (getApplicationContext(), "Selected : " + laurea, Toast.LENGTH_SHORT)
-                    .show();
 
-            SharedPreferences prefs = getSharedPreferences("laurea", MODE_PRIVATE);
-            SharedManager managerLaurea = new SharedManager(prefs);
+            Toast.makeText(getApplicationContext(), "Selected : " + laurea, Toast.LENGTH_SHORT).show();
 
-            managerLaurea.setLaurea(laurea);
-            NotifListner.DEGREE = laurea;
+            manager.setUserDataInfo(laurea, SharedManager.laureaKey);
 
             startActivity(new Intent(this, MainActivity.class));
 

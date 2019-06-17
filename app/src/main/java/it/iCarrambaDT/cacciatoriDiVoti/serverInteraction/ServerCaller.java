@@ -17,7 +17,8 @@ public class ServerCaller {
 
     private static final int SERVER_PORT = 1025;
     //private static final String SERVER_IP = "eziodb.ddns.net";
-    private static final String SERVER_IP = "192.168.1.236";
+    //TODO rimuovere localhost prima della deploy, verificare dominio
+    private static final String SERVER_IP = "localhost";
 
     private ServerCaller(){
     }

@@ -48,20 +48,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         scheduleNotification(getBaseContext().getApplicationContext(),delay, repeat,  notificationId,1);
 
-        //startActivity(new Intent(this, WaitingServerActivity.class));
-
-        //startActivity(new Intent(this, BookletActivity.class));
-
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
-        //Usato per testare classifica
-        //startActivity(new Intent(this, ClassificaActivity.class));
-
     }
 
     private void resetTimer(long millis) {
@@ -111,8 +102,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onTimerFinished() {
-
-        System.out.println("ciao");
 
         //Chiedo (rarità) del voto al control
         VotoAsyncTask vat = new VotoAsyncTask();
