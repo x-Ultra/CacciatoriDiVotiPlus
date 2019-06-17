@@ -35,19 +35,24 @@ public class VotoCattActivity extends AppCompatActivity implements View.OnClickL
 
         //Imposto i campi
         esameView = findViewById(R.id.corsoTW);
-        esameView.setText(votoBundle.getString("Materia"));
+        //esameView.setText(votoBundle.getString("Materia"));
+        esameView.setText("Fondamenti di Controlli");
+
 
         creditiView = findViewById(R.id.creditiTW);
-        creditiView.setText(Integer.toString(votoBundle.getInt("Crediti")));
+        //creditiView.setText(Integer.toString(votoBundle.getInt("Crediti")));
+        creditiView.setText("18");
+
 
         votoView = findViewById(R.id.votoTW);
-        votoView.setText(Integer.toString(votoBundle.getInt("Voto")));
+        //votoView.setText(Integer.toString(votoBundle.getInt("Voto")));
+        votoView.setText("28");
 
         raritaView = findViewById(R.id.rarityImageView);
-        raritaView.changeRarity(votoBundle.getInt("Rarita"));
+        //raritaView.changeRarity(votoBundle.getInt("Rarita"));
 
         catturaView = findViewById(R.id.tvCaptTime);
-        catturaView.setText(votoBundle.getString("TempoCattura"));
+        //catturaView.setText(votoBundle.getString("TempoCattura"));
 
         homeBtn = findViewById(R.id.myButton);
         homeBtn.setOnClickListener(this);

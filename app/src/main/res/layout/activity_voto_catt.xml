@@ -20,9 +20,11 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:text="@string/corsoStr"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/myButton"
             app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
         <TextView
@@ -30,14 +32,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="12dp"
             android:layout_marginEnd="8dp"
             android:text="@string/votoStr"
-            android:textSize="18sp"
+            android:textColor="#147A14"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.501"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/creditiTW" />
+            app:layout_constraintStart_toEndOf="@+id/myButton"
+            app:layout_constraintTop_toBottomOf="@+id/corsoTW" />
 
         <TextView
             android:id="@+id/creditiTW"
@@ -47,8 +49,10 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:text="@string/corsoStr"
+            android:textAlignment="center"
+            android:textColor="@android:color/black"
             android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/myButton"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
@@ -57,12 +61,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="12dp"
             android:layout_marginEnd="8dp"
             android:text="@string/creditiStr"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            android:textColor="#147A14"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/myButton"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/corsoTW" />
 
@@ -71,54 +75,46 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:layout_marginEnd="8dp"
             android:text="@string/corsoStr"
-            android:textAlignment="center"
+            android:textAlignment="viewStart"
+            android:textColor="@android:color/black"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.501"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView" />
+            app:layout_constraintTop_toBottomOf="@+id/tvCaptTime" />
 
         <it.iCarrambaDT.cacciatoriDiVoti.customViews.RarityImageView
             android:id="@+id/rarityImageView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="3dp"
             android:layout_marginEnd="8dp"
+            android:transitionName="rarity"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/legendary"
-            android:transitionName="rarity"/>
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:text="@string/corsoStr"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rarityImageView" />
+            app:layout_constraintTop_toBottomOf="@+id/textView7"
+            app:srcCompat="@drawable/legendary" />
 
         <it.iCarrambaDT.cacciatoriDiVoti.customViews.MyButton
             android:id="@+id/myButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
+            android:background="#147A14"
             android:text="@string/homeStr"
+            android:textColor="@android:color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.511"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/corsoTW"
+            app:layout_constraintVertical_bias="0.085" />
 
         <TextView
             android:id="@+id/textView7"
@@ -127,27 +123,29 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
             android:text="@string/votoCatturatoStr"
-            android:textSize="24sp"
-            app:layout_constraintBottom_toTopOf="@+id/myButton"
+            android:textColor="#147A14"
+            android:textSize="28sp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.562"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvCaptTime" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tvCaptTimeTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="3dp"
             android:layout_marginEnd="8dp"
             android:text="@string/captTimeStr"
             android:textSize="18sp"
+            android:textColor="#147A14"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/votoTW" />
+            app:layout_constraintTop_toBottomOf="@+id/rarityImageView" />
 
         <TextView
             android:id="@+id/tvCaptTime"
@@ -157,6 +155,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:text="00:00"
+            android:textColor="@android:color/black"
             android:textSize="30sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
