@@ -44,9 +44,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         long delay=1000;
         long repeat = 1000;
-        int notificationId = 1234;
+        int notificationId = NotifListner.NOTIFICATION_ID;
 
-        scheduleNotification(getBaseContext().getApplicationContext(),delay, repeat,  notificationId);
+        scheduleNotification(getBaseContext().getApplicationContext(),delay, repeat,  notificationId,1);
 
         //startActivity(new Intent(this, WaitingServerActivity.class));
 
@@ -219,7 +219,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         vat.execute(this);
     }
 
-    public void scheduleNotification(Context context, long delay, long repeat, int notificationId) {
+    public void scheduleNotification(Context context, long delay, long repeat, int notificationId, int state) {
 
         Intent notificationIntent = new Intent(context, NotifListner.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, notificationId, notificationIntent, PendingIntent.FLAG_CANCEL_CURRENT);
@@ -229,6 +229,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         long futureInMillis = SystemClock.elapsedRealtime() + delay;
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         alarmManager.cancel(pendingIntent);
-        alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis,repeat, pendingIntent);
+        if (state == 1) {
+            alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis, repeat, pendingIntent);
+        }
     }
+
 }

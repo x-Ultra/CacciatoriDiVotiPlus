@@ -214,7 +214,7 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
             //createCircle(41.8525221, 12.62088576);
             createCircle(materiaPlus.getLat(), materiaPlus.getLng());
 
-            //Sposto la telecara sul cerchio
+            //Sposto la telecamera sul cerchio
             CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(new LatLng(materiaPlus.getLat(), materiaPlus.getLng()), 100);
             System.out.println(materiaPlus.getLat() +"-"+ materiaPlus.getLng());
             map.animateCamera(cameraUpdate);

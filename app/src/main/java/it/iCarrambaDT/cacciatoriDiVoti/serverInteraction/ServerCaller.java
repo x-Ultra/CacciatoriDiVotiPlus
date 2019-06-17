@@ -17,7 +17,7 @@ public class ServerCaller {
 
     private static final int SERVER_PORT = 1025;
     //private static final String SERVER_IP = "eziodb.ddns.net";
-    private static final String SERVER_IP = "160.80.133.20";
+    private static final String SERVER_IP = "192.168.1.236";
 
     private ServerCaller(){
     }

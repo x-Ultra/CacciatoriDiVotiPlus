@@ -135,7 +135,7 @@ public class EntryPointActivity extends AppCompatActivity  implements View.OnCli
 
     @Override
     public void onClick(View v) {
-        if (laurea != null && nomeStudente.getText().length()>0){
+        if (laurea != null && nomeStudente.getText().length()>0 ){
             Toast.makeText
                     (getApplicationContext(), "Vado da Ezio " + nomeStudente.getText() + laurea, Toast.LENGTH_SHORT)
                     .show();
@@ -147,15 +147,15 @@ public class EntryPointActivity extends AppCompatActivity  implements View.OnCli
             manager.setUserDataInfo(nomeStudente.getText().toString());
 
             //...e la laurea
-            if (laurea == plants[1]) {
+            if (laurea.equals(plants[1])) {
                 laurea = "ing_info";
 
             }
-            else if (laurea == plants[2]){
+            else if (laurea.equals(plants[2])){
                 laurea = "eco";
             }
 
-            else if (laurea == plants[3]){
+            else if (laurea.equals(plants[3])){
                 laurea = "med";
             }
             Toast.makeText
