@@ -42,11 +42,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        long delay=1000;
-        long repeat = 1000;
-        int notificationId = NotifListner.NOTIFICATION_ID;
 
-        scheduleNotification(getBaseContext().getApplicationContext(),delay, repeat,  notificationId,1);
 
         //startActivity(new Intent(this, WaitingServerActivity.class));
 
@@ -124,7 +120,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onTaskFinished(MateriaPlus materiaPlus) {
-
+        long delay = 0;
         gifView = findViewById(R.id.gifImageViewMain);
         gifView.setVisibility(View.GONE);
 
@@ -166,6 +162,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             try {
                 resetTimer(materiaPlus.getTimerInMillis());
+                delay = materiaPlus.getTimerInMillis();
+                scheduleNotification(getBaseContext().getApplicationContext(),delay, materiaPlus.getTimeToLiveMinutes()*60*1000,  NotifListner.NOTIFICATION_ID);
+                System.out.println(materiaPlus.getTimeToLiveMinutes());
+                System.out.println(materiaPlus.getTimerInMillis());
+
             } catch (ParseException e) {
                 //Errore nella ricezione del pacchetto try again
 
@@ -199,6 +200,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         recButt.setVisibility(View.INVISIBLE);
 
 
+
+
     }
 
     @Override
@@ -219,19 +222,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         vat.execute(this);
     }
 
-    public void scheduleNotification(Context context, long delay, long repeat, int notificationId, int state) {
+    public void scheduleNotification(Context context, long delay, long repeat, int notificationId) {
 
         Intent notificationIntent = new Intent(context, NotifListner.class);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, notificationId, notificationIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+        System.out.println(repeat);
+        System.out.println(delay);
 
 
 
         long futureInMillis = SystemClock.elapsedRealtime() + delay;
+        System.out.println(futureInMillis);
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         alarmManager.cancel(pendingIntent);
-        if (state == 1) {
-            alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis, repeat, pendingIntent);
-        }
+        alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis, repeat, pendingIntent);
+
     }
 
 }

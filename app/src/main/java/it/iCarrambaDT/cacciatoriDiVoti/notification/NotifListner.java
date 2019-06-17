@@ -36,6 +36,7 @@ import static android.content.Context.MODE_PRIVATE;
 import static it.iCarrambaDT.cacciatoriDiVoti.notification.App.CHANNEL_ID;
 
 public class NotifListner extends BroadcastReceiver implements VotoListener {
+    public static String LIFETIME;
     private MateriaPlus materia;
     public static String DEGREE = "med";
     public static int NOTIFICATION_ID = 1234;
@@ -108,27 +109,27 @@ public class NotifListner extends BroadcastReceiver implements VotoListener {
 
             case 1:
                 //Cambiare immagine a comune
-                rarityId = R.drawable.common;
+                rarityId = R.drawable.commonnot;
                 break;
 
             case 2:
                 //Cambiare immagine a rara
-                rarityId = R.drawable.rare;
+                rarityId = R.drawable.rarenot2;
                 break;
 
             case 3:
                 //Cambiare immagine a mitica
-                rarityId = R.drawable.mythic;
+                rarityId = R.drawable.mythicnot;
                 break;
 
             case 4:
                 //Cambiare immagine a epica
-                rarityId = R.drawable.epico;
+                rarityId = R.drawable.epicnot;
                 break;
 
             case 5:
                 //Cambiare immagine a leggendaria
-                rarityId = R.drawable.legendary;
+                rarityId = R.drawable.legendarynot;
                 break;
         }
 
