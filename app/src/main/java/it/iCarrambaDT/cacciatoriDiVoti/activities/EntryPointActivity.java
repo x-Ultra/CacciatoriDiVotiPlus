@@ -61,7 +61,7 @@ public class EntryPointActivity extends AppCompatActivity  implements View.OnCli
         logoUni = (ImageView) findViewById(R.id.imageView2);
         logoUni.setImageAlpha(127);
 
-        //dichiaro le varie View
+        //dichiaro le altre View
         welcome = (MyTextView) findViewById(R.id.welcomeTitle);
         textWelcome = (MyTextView) findViewById(R.id.welcomeText);
         nomeStudente = (MyEditText) findViewById(R.id.username);
@@ -69,7 +69,7 @@ public class EntryPointActivity extends AppCompatActivity  implements View.OnCli
         completeButton.setOnClickListener(this);
         spinner = (MySpinner) findViewById(R.id.lauree);
 
-        // Riuscire a mettere questo dentro a un Xml per tradurre
+        //Recupero la lista con le lauree dal file XML string
         plants = getResources().getStringArray(R.array.Degree);
 
         plantsList = new ArrayList<>(Arrays.asList(plants));
@@ -91,6 +91,7 @@ public class EntryPointActivity extends AppCompatActivity  implements View.OnCli
                 }
             }
             @Override
+            //setto la tendina
             public View getDropDownView(int position, View convertView,
                                         ViewGroup parent) {
                 View view = super.getDropDownView(position, convertView, parent);
