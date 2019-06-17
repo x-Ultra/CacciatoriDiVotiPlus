@@ -49,11 +49,9 @@ public class NotifListner extends BroadcastReceiver implements VotoListener {
         //Prendo la laurea dalle shared
         SharedPreferences shared = context.getSharedPreferences("userData", MODE_PRIVATE);
         SharedManager manager = new SharedManager(shared);
-
         String degree = manager.getLaurea();
+
         //contatto il server
-
-
         VotoAsyncTask vat = new VotoAsyncTask(degree);
         vat.setListener(this);
 
@@ -77,25 +75,25 @@ public class NotifListner extends BroadcastReceiver implements VotoListener {
 
 
     @Override
+    //Qui eseguo le azioni in maniera asincrona
     public void onTaskFinished(MateriaPlus materia) {
         this.materia = materia;
 
+        //creo la PendingIntent
         Intent intentStart = new Intent(context, SplashScreenActivity.class);
         PendingIntent activity = PendingIntent.getActivity(context, 0, intentStart, PendingIntent.FLAG_CANCEL_CURRENT);
 
+        //Prendo il nome dell'utente
         SharedPreferences shared = context.getSharedPreferences("userData", MODE_PRIVATE);
         SharedManager manager = new SharedManager(shared);
 
         String username= manager.getUserDataInfo("username");
 
-        //contatto il server
 
         if(materia == null){
             //Esco e non visualizzo nessuna notifica
             return ;
-
         }
-
 
         int rarityId = R.drawable.common;
 
