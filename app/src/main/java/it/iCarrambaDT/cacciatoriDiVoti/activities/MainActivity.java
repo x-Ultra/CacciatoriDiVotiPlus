@@ -152,7 +152,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             //Imposto la timer text view
             timerTextView = findViewById(R.id.timerTextViewMain);
+            timerTextView.setVisibility(View.VISIBLE);
             timerTextView.setListener(this);
+
+            MyTextView rem = findViewById(R.id.tempoTextView);
+            rem.setVisibility(View.VISIBLE);
 
             try {
                 delay = materiaPlus.getTimerInMillis();
@@ -190,9 +194,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         standingsButton.setOnClickListener(this);
 
 
-
-
-
     }
 
     @Override
@@ -213,7 +214,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         rarityView = findViewById(R.id.rarityImageMain);
         rarityView.setImageDrawable(getDrawable(R.drawable.placeholder));
 
+        MyTextView rem = findViewById(R.id.tempoTextView);
+        rem.setVisibility(View.INVISIBLE);
 
+        timerTextView = findViewById(R.id.timerTextViewMain);
+        timerTextView.setVisibility(View.INVISIBLE);
 
         gifView = findViewById(R.id.gifImageViewMain);
         Glide.with(this).asGif().load(R.raw.loading).into(gifView);
