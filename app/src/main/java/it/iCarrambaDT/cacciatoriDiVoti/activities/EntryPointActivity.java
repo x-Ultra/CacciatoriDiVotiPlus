@@ -112,17 +112,12 @@ public class EntryPointActivity extends AppCompatActivity  implements View.OnCli
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String selectedItemText = (String) parent.getItemAtPosition(position);
-                // If user change the default selection
-                // First item is disable and it is used for hint
+
                 if(position > 0){
-                    // Notify the selected item text
                     tVSpinner = findViewById(R.id.tVSpinner);
 
                     laurea = selectedItemText;
-                    Toast.makeText
-                            (getApplicationContext(), "Selected : " + selectedItemText, Toast.LENGTH_SHORT)
-                            .show();
-                    tVSpinner.setTextColor(Color.BLACK);
+                   tVSpinner.setTextColor(Color.BLACK);
 
                 }
             }
@@ -141,7 +136,6 @@ public class EntryPointActivity extends AppCompatActivity  implements View.OnCli
                 && nomeStudente.getText().length() > 0 ){
 
             //TODO cancellare prima della deploy
-            Toast.makeText(getApplicationContext(), "Vado da Ezio " + nomeStudente.getText() + laurea, Toast.LENGTH_SHORT).show();
 
             //Salvo nelle Shared il nome...
             SharedPreferences shared = getSharedPreferences("userData", MODE_PRIVATE);
@@ -158,7 +152,6 @@ public class EntryPointActivity extends AppCompatActivity  implements View.OnCli
                 laurea = "med";
             }
 
-            Toast.makeText(getApplicationContext(), "Selected : " + laurea, Toast.LENGTH_SHORT).show();
 
             manager.setUserDataInfo(laurea, SharedManager.laureaKey);
 

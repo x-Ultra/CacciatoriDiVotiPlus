@@ -119,7 +119,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if (materiaPlus == null) {
 
-            Toast.makeText(this,R.string.cantConnectStr,Toast.LENGTH_LONG).show();
 
             gradesButton = findViewById(R.id.gradesButton);
             gradesButton.setOnClickListener(this);
