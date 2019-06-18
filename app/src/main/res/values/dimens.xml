@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="textViewVotoDim">50dp</dimen>
-    <dimen name="textViewVotoMinDim">10dp</dimen>
-    <dimen name="textViewMateriaDim">35dp</dimen>
+    <dimen name="textViewVotoMinDim">8dp</dimen>
+    <dimen name="textViewMateriaDim">25dp</dimen>
     <dimen name="textViewCfuDim">20dp</dimen>
     <dimen name="textViewEmptyDim">20dp</dimen>
     <dimen name="datiBooklet">20dp</dimen>

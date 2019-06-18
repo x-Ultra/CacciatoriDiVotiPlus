@@ -65,6 +65,7 @@ public class MateriaPlus extends Materia {
         Calendar cal = Calendar.getInstance();
         DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
 
+
         Date emission = dateFormat.parse(emissionTime);
         Date requested = dateFormat.parse(requestedTime);
 

@@ -167,6 +167,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 vat.execute(this);
                 return;
+            } catch (NullPointerException e) {
+                return;
             }
 
         }
