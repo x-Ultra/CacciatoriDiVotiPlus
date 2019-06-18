@@ -92,7 +92,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="44dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
         android:background="#147A14"
         android:text="@string/classificaButtonStr"
         android:textColor="@android:color/white"

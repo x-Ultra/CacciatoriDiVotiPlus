@@ -55,7 +55,7 @@ public class ClassificaActivity extends AppCompatActivity implements PageListene
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         rv.setLayoutManager(layoutManager);
 
-        //insertFakeVoti();
+        insertFakeVoti();
 
         tvEmpty = findViewById(R.id.tvEmptyClassifica);
 
@@ -101,12 +101,8 @@ public class ClassificaActivity extends AppCompatActivity implements PageListene
         dbManager.insertVoto("30", "Ingegneria Del Software E Progettazione Web","21", "12", "5");
         dbManager.insertVoto("18", "Basi Di Dati","121", "9","5");
         dbManager.insertVoto("24", "Automi E Linguaggi","5021", "6", "5");
-        dbManager.insertVoto("28", "aa","3021", "6", "2");
-        dbManager.insertVoto("18", "aaaa","1200", "6","1");
-        dbManager.insertVoto("31", "aaaaaa","921", "6","4"); //:)
-        dbManager.insertVoto("30", "bbb","21", "12", "1");
-        dbManager.insertVoto("18", "bbbbbbbbbbbb","121", "9","3");
-        dbManager.insertVoto("24", "aaaaaaaaaa","5021", "6", "5");
-        dbManager.insertVoto("28", "2342","3021", "6", "5");
+        dbManager.insertVoto("28", "Fondamenti di elettronica","13021", "6", "5");
+        dbManager.insertVoto("18", "Sistemi operativi","91200", "6","5");
+        dbManager.insertVoto("31", "Analisi 1","9221", "12","5");
     }
 }
