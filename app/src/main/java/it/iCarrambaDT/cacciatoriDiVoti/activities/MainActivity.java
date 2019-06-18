@@ -210,6 +210,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         MyImageView recButt = findViewById(R.id.reconnectButton);
         recButt.setVisibility(View.INVISIBLE);
 
+        rarityView = findViewById(R.id.rarityImageMain);
+        rarityView.setImageDrawable(getDrawable(R.drawable.placeholder));
+
+
 
         gifView = findViewById(R.id.gifImageViewMain);
         Glide.with(this).asGif().load(R.raw.loading).into(gifView);
