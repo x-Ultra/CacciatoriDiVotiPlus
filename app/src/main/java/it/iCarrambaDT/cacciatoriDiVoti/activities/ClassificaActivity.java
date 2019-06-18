@@ -55,7 +55,7 @@ public class ClassificaActivity extends AppCompatActivity implements PageListene
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         rv.setLayoutManager(layoutManager);
 
-        insertFakeVoti();
+        //insertFakeVoti();
 
         tvEmpty = findViewById(R.id.tvEmptyClassifica);
 

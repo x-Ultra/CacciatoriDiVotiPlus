@@ -34,7 +34,6 @@ public class VotoAsyncTask extends AsyncTask<Context, Void, MateriaPlus>{
     protected MateriaPlus doInBackground(Context... contexts) {
         Context context = contexts[0];
 
-
         try {
 
             materiaPlus = ServerCaller.getInstance().getVotoFromServer(laurea);

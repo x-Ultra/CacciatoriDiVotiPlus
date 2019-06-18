@@ -192,7 +192,7 @@ public class PageView extends View {
                     DrawableCompat.setTint(wrappedDrawable, Color.parseColor(backColor));
                     d.setBounds(Math.round(i * rectSize + horiSpace), vertSpace, Math.round((i + 1) * rectSize - horiSpace), hei - vertSpace);
                     d.draw(canvas);
-                    //DrawableCompat.setTint(wrappedDrawable, Color.parseColor("#4fff51"));
+                    DrawableCompat.setTint(wrappedDrawable, Color.parseColor(foreColor));
                 }
 
                 //Disegno delle linee per separare i rettangoli

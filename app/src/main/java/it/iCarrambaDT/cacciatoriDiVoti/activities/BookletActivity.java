@@ -49,7 +49,7 @@ public class BookletActivity extends AppCompatActivity {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         rv.setLayoutManager(layoutManager);
 
-        insertFakeVoti();
+        //insertFakeVoti();
 
         votiOttenuti = dbManager.getVoti();
 
