@@ -129,12 +129,14 @@ public class NotifListner extends BroadcastReceiver implements VotoListener {
         //costruisco la notifica
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context,CHANNEL_ID)
                 .setLargeIcon(resizeFunction (context,rarityId))
-                .setSmallIcon(R.drawable.icarramba_logo)
+                .setSmallIcon(R.drawable.logonot)
                 .setColor(Color.GREEN)
                 .setContentTitle(context.getString(R.string.notificationTitle))
                 .setContentText(username + " "+context.getString(R.string.notificationText))
                 .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
                 .setContentIntent(activity);
+
+        builder.setVisibility(Notification.VISIBILITY_PUBLIC);
 
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(NOTIFICATION_ID, builder.build());
