@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.Window;
+import android.widget.ImageView;
 
 import java.util.Vector;
 
@@ -27,6 +28,9 @@ public class BookletActivity extends AppCompatActivity {
     private MyTextView tvCrediti;
     private MyTextView tvEsami;
 
+    private ImageView laurea;
+    private ImageView torre;
+
     private Vector<Materia> votiOttenuti;
 
     @Override
@@ -39,6 +43,12 @@ public class BookletActivity extends AppCompatActivity {
         setContentView(R.layout.activity_booklet);
 
         MyTextView tvEmptyBooklet = findViewById(R.id.tvEmptyBooklet);
+
+        laurea = findViewById(R.id.laureaView);
+        torre = findViewById(R.id.imageView);
+
+        //immagine del laureato settata ad invisibile
+        laurea.setVisibility(View.INVISIBLE);
 
         tvNome = findViewById(R.id.tvStudentsName);
         tvCrediti = findViewById(R.id.tvCreditsEarned);
@@ -53,6 +63,17 @@ public class BookletActivity extends AppCompatActivity {
 
         votiOttenuti = dbManager.getVoti();
 
+        checkLaureato();
+
+        if(votiOttenuti.size() != 0)
+            tvEmptyBooklet.setVisibility(View.GONE);
+
+        BookletAdapters adapter = new BookletAdapters(votiOttenuti);
+        rv.setAdapter(adapter);
+    }
+
+    private void checkLaureato(){
+
         int crediti = 0, esami = 0;
 
         esami = votiOttenuti.size();
@@ -66,11 +87,11 @@ public class BookletActivity extends AppCompatActivity {
 
         tvNome.setText(manager.getUserDataInfo(SharedManager.userDataKey));
 
-        if(votiOttenuti.size() != 0)
-            tvEmptyBooklet.setVisibility(View.GONE);
+        if(crediti >= 180) {
+            torre.setVisibility(View.INVISIBLE);
+            laurea.setVisibility(View.VISIBLE);
+        }
 
-        BookletAdapters adapter = new BookletAdapters(votiOttenuti);
-        rv.setAdapter(adapter);
     }
 
     private void insertFakeVoti(){
