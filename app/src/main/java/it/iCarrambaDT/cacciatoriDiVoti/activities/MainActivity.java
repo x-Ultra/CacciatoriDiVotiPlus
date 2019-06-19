@@ -241,6 +241,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         alarmManager.cancel(pendingIntent);
+        /**Per far ricevere le notifiche anche in DOZE moe ed in risparmio energetico
+        Si può utilizzare la funzione setAndAllowedWhileIdle, ma sarebbe poco efficiente in termini di batteria
+         essendo le nostre notifiche ripetitive e non di fondamentale importanza per l'utente*/
         alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis, repeat, pendingIntent);
 
     }
