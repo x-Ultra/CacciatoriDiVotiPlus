@@ -32,7 +32,7 @@ public class TimerTextView extends android.support.v7.widget.AppCompatTextView {
     //Time in milliseconds
     public void startTimer(long time) {
 
-        //Imposto il timer, mi interessano solo i millisecondi che mancano alla prossima ora
+        //Imposto il timer, mi interessano solo i centisecondi
         cd = new CountDownTimer(time, 10) {
 
             public void onTick(long millisUntilFinished) {
@@ -56,7 +56,6 @@ public class TimerTextView extends android.support.v7.widget.AppCompatTextView {
         long onlyMin = ((time - onlyMillis - onlySec*1000)/60000);
         String millis;
         String seconds;
-        String minutes;
 
         if (onlyMillis < 100)
             millis = ":0" + onlyMillis/10;

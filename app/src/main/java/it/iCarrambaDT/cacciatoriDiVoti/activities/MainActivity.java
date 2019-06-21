@@ -35,14 +35,16 @@ import it.iCarrambaDT.cacciatoriDiVoti.notification.NotifListner;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, TimerListener, VotoListener {
 
-    TimerTextView timerTextView;
-    RarityImageView rarityView;
-    MyButton mapButton;
-    MyButton gradesButton;
-    MyButton standingsButton;
-    ImageView gifView;
+    private TimerTextView timerTextView;
+    private RarityImageView rarityView;
+    private MyButton mapButton;
+    private MyButton gradesButton;
+    private MyButton standingsButton;
+    private ImageView gifView;
 
     private String degree;
+    private boolean arrived = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +80,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
 
         if (v.getId() == R.id.mapButton) {
+
+            if (!arrived) {
+                Toast.makeText(this, getString(R.string.votoNotArrStr), Toast.LENGTH_LONG).show();
+                return;
+            }
 
             String transitionName = "rarity";
 
@@ -119,6 +126,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if (materiaPlus == null) {
 
+            mapButton = findViewById(R.id.mapButton);
+            mapButton.setOnClickListener(this);
 
             gradesButton = findViewById(R.id.gradesButton);
             gradesButton.setOnClickListener(this);
@@ -192,6 +201,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         standingsButton = findViewById(R.id.classificaButton);
         standingsButton.setOnClickListener(this);
 
+        arrived =true;
 
     }
 

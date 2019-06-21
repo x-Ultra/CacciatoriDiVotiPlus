@@ -44,4 +44,5 @@
 
     </string-array>
     <string name="notificationTitle">New Mark!!</string>
+    <string name="votoNotArrStr">Grade not ready</string>
 </resources>
