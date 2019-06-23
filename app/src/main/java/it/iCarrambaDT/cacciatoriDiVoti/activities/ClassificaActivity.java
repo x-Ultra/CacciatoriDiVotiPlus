@@ -96,13 +96,13 @@ public class ClassificaActivity extends AppCompatActivity implements PageListene
         Rarità calcolata a mano utilizzando la funzione di rarità
          */
 
-        dbManager.insertVoto("18", "Algebra E Logica","1200", "6","5");
-        dbManager.insertVoto("31", "Mobile Programming","921", "6","5"); //:)
-        dbManager.insertVoto("30", "Ingegneria Del Software E Progettazione Web","21", "12", "5");
-        dbManager.insertVoto("18", "Basi Di Dati","121", "9","5");
-        dbManager.insertVoto("24", "Automi E Linguaggi","5021", "6", "5");
-        dbManager.insertVoto("28", "Fondamenti di elettronica","13021", "6", "5");
-        dbManager.insertVoto("18", "Sistemi operativi","91200", "6","5");
+        dbManager.insertVoto("18", "Algebra E Logica","10200", "6","1");
+        dbManager.insertVoto("31", "Mobile Programming","9210", "6","4"); //:)
+        dbManager.insertVoto("30", "Ingegneria Del Software E Progettazione Web","21000", "12", "5");
+        dbManager.insertVoto("18", "Basi Di Dati","1021", "9","1");
+        dbManager.insertVoto("24", "Automi E Linguaggi","5021", "6", "3");
+        dbManager.insertVoto("28", "Fondamenti di elettronica","13021", "6", "4");
+        dbManager.insertVoto("18", "Sistemi operativi","91200", "6","1");
         dbManager.insertVoto("31", "Analisi 1","9221", "12","5");
     }
 }

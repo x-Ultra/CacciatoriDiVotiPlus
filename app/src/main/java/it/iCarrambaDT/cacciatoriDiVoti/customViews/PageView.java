@@ -237,6 +237,9 @@ public class PageView extends View {
         switch (event.getAction())
         {
             //se l'utente clicca un rettangolo diverso dall'attuale chiamo la funzione e cambio la View
+
+
+
             case MotionEvent.ACTION_DOWN:
                 float rectSize = (float)wid/PAGE_NBR;
                 int prev = currPage;
