@@ -169,7 +169,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             try {
                 delay = materiaPlus.getTimerInMillis();
                 resetTimer(delay);
-                scheduleNotification(getBaseContext().getApplicationContext(),delay, materiaPlus.getTimeToLiveMinutes()*60*1000,  NotifListner.NOTIFICATION_ID);
+                scheduleNotification(getBaseContext().getApplicationContext(),delay,
+                        materiaPlus.getTimeToLiveMinutes()*60*1000,  NotifListner.NOTIFICATION_ID);
 
             } catch (ParseException e) {
                 //Errore nella ricezione del pacchetto try again
@@ -243,15 +244,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void scheduleNotification(Context context, long delay, long repeat, int notificationId) {
 
         Intent notificationIntent = new Intent(context, NotifListner.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, notificationId, notificationIntent, PendingIntent.FLAG_CANCEL_CURRENT);
-
-
-
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, notificationId, notificationIntent,
+                PendingIntent.FLAG_CANCEL_CURRENT);
+        //tempo rimasto prima della scadenza del voto attuale
         long futureInMillis = SystemClock.elapsedRealtime() + delay + 5000;
 
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         alarmManager.cancel(pendingIntent);
-        /**Per far ricevere le notifiche anche in DOZE moe ed in risparmio energetico
+        /**Per far ricevere le notifiche anche in DOZE mode ed in risparmio energetico
         Si può utilizzare la funzione setAndAllowedWhileIdle, ma sarebbe poco efficiente in termini di batteria
          essendo le nostre notifiche ripetitive e non di fondamentale importanza per l'utente*/
         alarmManager.setInexactRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, futureInMillis, repeat, pendingIntent);

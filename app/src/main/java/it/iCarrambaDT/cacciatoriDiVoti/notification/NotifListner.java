@@ -136,6 +136,7 @@ public class NotifListner extends BroadcastReceiver implements VotoListener {
                 .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
                 .setContentIntent(activity);
 
+        //Permette di vedere la notifica anche dal lock screen
         builder.setVisibility(Notification.VISIBILITY_PUBLIC);
 
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
