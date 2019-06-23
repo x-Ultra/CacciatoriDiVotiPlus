@@ -71,7 +71,6 @@ public class EntryPointActivity extends AppCompatActivity  implements View.OnCli
 
         //Recupero la lista con le lauree dal file XML string
         plants = getResources().getStringArray(R.array.Degree);
-
         plantsList = new ArrayList<>(Arrays.asList(plants));
 
         // Initializzzo an ArrayAdapter con le lauree
@@ -82,14 +81,11 @@ public class EntryPointActivity extends AppCompatActivity  implements View.OnCli
                 if(position == 0 )
                 {
                     // Il primo Item lo disabilito per farlo hint
-                    return false;
-                }
+                    return false; }
                 else
                 {
 
-                    return true;
-                }
-            }
+                    return true; } }
             @Override
             //setto la tendina
             public View getDropDownView(int position, View convertView,
@@ -134,8 +130,6 @@ public class EntryPointActivity extends AppCompatActivity  implements View.OnCli
 
         if (laurea != null && nomeStudente.getText() != null
                 && nomeStudente.getText().length() > 0 ){
-
-            //TODO cancellare prima della deploy
 
             //Salvo nelle Shared il nome...
             SharedPreferences shared = getSharedPreferences("userData", MODE_PRIVATE);
